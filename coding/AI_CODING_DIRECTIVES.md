@@ -87,15 +87,14 @@ Do not plan the solution until you have deconstructed the problem.
     - `design.md`: **Mermaid Diagrams** for flows (Sequence/State).
     - `tasks.md`: Atomic checklist.
 - **Action:** If specs are missing/outdated, Update them FIRST.
+- **Pragmatism:** Do not over-engineer. Use specs to capture *decisions*. If a file (e.g., `design.md`) adds no value for a simple task, skip it.
 
 **1.2: Recursive Decomposition (The Knife)**
-- **Complexity Threshold:** IF the task is simple (< 50 lines of code, single script), **SKIP** decomposition and proceed to Implementation.
-- **Deconstruct:** Break complex requests down into **Atomic Units**.
-- **Definition:** An Atomic Unit is a problem so small that it:
-    1.  Has zero external dependencies (Pure Logic).
-    2.  Can be solved with a single function/class.
-    3.  Can be verified with a single unit test.
-- **The 'Why' Test:** For every component, ask "Why does this exist?" The answer must be "to transform Input A to Output B."
+- **Decompose:** Break complex requests down into **Atomic Units** in `tasks.md`.
+- **Granularity:** Each task must be < 1 hour execution.
+- **Inline Constraints:** Do not just link to specs. **Copy** the relevant constraints into the task.
+    - *Bad:* "Implement Login (see tech.md)"
+    - *Good:* "Implement Login. **Constraint:** Use Zod for validation (from tech.md)."
 
 **1.3: Modularity (The Box)**
 - **Group:** Organize Atomic Units into logical **Modules**.

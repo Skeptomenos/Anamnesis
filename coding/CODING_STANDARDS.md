@@ -131,3 +131,7 @@
 *   **Required Diagrams:**
     *   **Sequence Diagram:** For any multi-step interaction (User -> API -> DB).
     *   **State Diagram:** For any entity with complex lifecycle (e.g., Order Status: Pending -> Paid -> Shipped).
+
+**8.3 Pragmatic Spec Rule**
+*   **Zero Waste:** Do not create empty spec files. If a spec (like `design.md`) is not needed for the specific task, do not create it.
+*   **Inline Context:** When writing code, if a constraint is critical (e.g., "No Redux"), add it as a comment in the file header.

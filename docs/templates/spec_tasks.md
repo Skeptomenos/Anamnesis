@@ -2,12 +2,11 @@
 
 ## Phase 1: [Phase Name]
 - [ ] **TASK-001:** [Title]
-    - **Dependency:** [REQ-001, Design A]
-    - **Constraint:** [Tech Constraint]
+    - **Context/Constraints:** [e.g., "Must use Zod (from tech.md)", "See REQ-001"]
     - **Status:** Pending
 
 - [ ] **TASK-002:** [Title]
-    - **Dependency:** [TASK-001]
+    - **Context/Constraints:** [...]
     - **Status:** Pending
 
 ## Phase 2: [Phase Name]
