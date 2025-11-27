@@ -53,6 +53,13 @@ This file gets smarter over time. It captures:
 *   **Patterns:** Solutions that worked.
 *   **Anti-Patterns:** Approaches that failed.
 
+### 4. `docs/templates/` (The Tools)
+Standardized artifacts that ensure Spec-Driven Development (SDD):
+*   **`spec_product.md`:** Defines the "Why" (User Persona) and "Anti-Goals".
+*   **`spec_tech.md`:** Pins the Tech Stack and forbids specific libraries.
+*   **`spec_requirements.md`:** Forces logical clarity using **EARS** syntax.
+*   **`spec_tasks.md`:** A gated checklist for the "Stop-and-Wait" protocol.
+
 ---
 
 ## 📂 Directory Structure
