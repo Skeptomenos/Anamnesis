@@ -21,6 +21,11 @@ This document tracks the architectural and procedural evolution of the project. 
 - **Mandate:** Documentation updates (`CHANGELOG`, `DECISION_LOG`) and Learning Synthesis must be part of the **Definition of Done**.
 - **Outcome:** The "Epilogue Protocol" was created. An agent cannot claim a task is finished until it proves the docs are synced.
 
+### 1.4. Non-Destructive Documentation
+- **Learning:** AI Agents tend to summarize or rewrite files from scratch, accidentally deleting valuable historical context.
+- **Mandate:** Updates to Documentation (README, Specs) must be **Additive**. Never delete or truncate existing sections without explicit instruction.
+- **Outcome:** The "Preservation of Knowledge Rule" was added to Phase 1.5.
+
 ---
 
 ## 2. Tactical Patterns (The "How")
