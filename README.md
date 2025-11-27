@@ -30,6 +30,52 @@ Don't be alarmed if the AI doesn't start coding immediately. It is following a s
 5.  **Drift Detection:** It ensures code matches the Spec.
 6.  **Epilogue:** It updates Docs, Changelog, and Learnings before quitting.
 
+## 🔄 Interaction Diagram
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant AI as AI Architect
+    participant State as .context/active_state.md
+    participant Specs as docs/specs/
+
+    User->>AI: Prompt ("Build Feature X")
+    
+    rect rgb(30, 30, 30)
+    Note right of AI: Phase 0: Context
+    AI->>State: Read State & Constraints
+    end
+
+    alt Simple Task (< 1 hr)
+        AI->>User: Execute & Answer (Escape Hatch)
+    else Complex Task
+        rect rgb(20, 50, 80)
+        Note right of AI: Phase 1: Blueprint
+        AI->>Specs: Draft/Update Specs (Product, Tech, Req)
+        AI->>Specs: Create tasks.md (Execution Plan)
+        AI->>User: 🛑 Plan Summary & Request Approval
+        end
+        
+        User->>AI: "Proceed" (Consensus Gate)
+
+        loop Phase 2: Stop-and-Wait
+            AI->>Specs: Read Next Task from tasks.md
+            AI->>AI: Implement Atomic Unit
+            AI->>AI: Verify (Tests)
+            AI->>State: Update Progress
+            AI->>User: "Task Complete. Continue?"
+            User->>AI: "Continue"
+        end
+
+        rect rgb(20, 80, 20)
+        Note right of AI: Phase 4: Epilogue
+        AI->>Specs: Drift Detection (Code vs Spec)
+        AI->>State: Archive State & Update Learnings
+        AI->>User: "Session Closed."
+        end
+    end
+```
+
 ---
 
 ## 🧠 The Core Components
