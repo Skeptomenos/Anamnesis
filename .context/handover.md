@@ -1,13 +1,15 @@
-# 🏁 Handover: Upgrade to SDD v3
+# 🏁 Handover: Framework Harmonization (v3.1)
 
 ## 📍 Where We Are
-*   **System Upgrade:** Successfully transitioned to **AI Architect Directives v3 (Spec-Driven & State-Aware)**.
-*   **New Workflow:** "Pragmatic SDD" is active. Agents must now use `docs/specs/` templates (`product`, `tech`, `requirements`, `tasks`) for complex work.
-*   **New Guardrails:**
-    *   **Consensus Gate:** Agents must STOP and summarize the plan before coding.
-    *   **Knowledge Preservation:** Agents must APPEND/REFINE docs, never delete without permission.
-*   **Docs Synced:** `README.md`, `CHANGELOG.md`, and `PROJECT_LEARNINGS.md` are up to date.
+*   **System Upgrade:** Framework updated to **v3.1.0**.
+*   **Structure Harmonized:** All distributable files are now in `coding/`.
+    *   `coding/templates/` contains all specs, logs, and state templates.
+    *   `coding/PROJECT_LEARNINGS_TEMPLATE.md` is the clean seed.
+*   **Logic Refined:**
+    *   **Single Source of Truth:** `tasks.md` leads execution; `active_state.md` tracks context.
+    *   **Decision Log:** Only for "Fundamental Pivots" (Dependency/Schema/Deprecation).
+*   **Project Instance:** `PROJECT_LEARNINGS.md`, `DECISION_LOG.md`, and `CHANGELOG.md` for *this* repo are in the root.
 
 ## 👉 Next Steps
-1.  **Pilot Run:** The next agent should attempt a complex coding task using the v3 workflow to verify the "Consensus Gate" and "Spec Loop" in practice.
-2.  **Constraint Check:** Ensure the "Inlined Constraints" in `tasks.md` effectively prevent stack drift.
+1.  **Validation:** Use the framework in a real "Pilot" project to verify if the "Single Source of Truth" logic actually reduces friction as intended.
+2.  **Monitor:** Watch for "Decision Log" usage. Is the "Dependency/Schema" trigger too strict or too loose?

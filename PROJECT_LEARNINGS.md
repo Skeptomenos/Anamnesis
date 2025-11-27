@@ -51,6 +51,10 @@ This document tracks the architectural and procedural evolution of the project. 
 - **Issue:** Duplicating task lists in `active_state.md` and `tasks.md` created "Split Brain" and wasted tokens.
 - **Pattern:** **No Duplication.** `tasks.md` is the sole owner of execution status (`[ ]` vs `[x]`). `active_state.md` tracks high-level Phase and Learnings only.
 
+### 2.5. Distributable Brain vs. Project Instance
+- **Issue:** Users were confused about which files to copy to their new projects.
+- **Pattern:** **Harmonized Structure.** We separated the "Framework" (in `coding/`) from the "Project Instance" (Root). Users simply copy the `coding/` folder to "hydrate" a new project.
+
 ---
 
 ## 3. Anti-Patterns (What Failed)

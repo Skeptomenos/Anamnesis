@@ -5,6 +5,16 @@ All notable changes to the **Anamnesis** framework will be documented in this fi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.0] - 2025-11-27
+### Added
+- **Harmonized Structure:** Consolidated all distributable framework files (Directives, Standards, Templates) into a single, portable `coding/` directory.
+- **Decision Log Logic:** Defined "Fundamental Pivot" (Dependency/Schema/Deprecation) as the trigger for Decision Records. Added `coding/templates/decision_log.md`.
+- **Project Learnings Template:** Created `coding/PROJECT_LEARNINGS_TEMPLATE.md` as a clean seed for new projects, separating framework meta-rules from project constraints.
+
+### Changed
+- **State Optimization:** Removed task duplication between `active_state.md` and `tasks.md`. `tasks.md` is now the Single Source of Truth for execution status.
+- **File Layout:** Moved `DECISION_LOG.md` and `PROJECT_LEARNINGS.md` to the project root to distinguish "Project Instance" from "Distributable Framework".
+
 ## [3.0.0] - 2025-11-27
 ### Added
 - **Pragmatic Spec-Driven Development (SDD):** A lightweight, context-first approach to specifications.
