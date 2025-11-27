@@ -1,15 +1,10 @@
-# 🏁 Handover: Framework Harmonization (v3.1)
+# 🏁 Handover: Final Documentation Polish (v3.1)
 
 ## 📍 Where We Are
-*   **System Upgrade:** Framework updated to **v3.1.0**.
-*   **Structure Harmonized:** All distributable files are now in `coding/`.
-    *   `coding/templates/` contains all specs, logs, and state templates.
-    *   `coding/PROJECT_LEARNINGS_TEMPLATE.md` is the clean seed.
-*   **Logic Refined:**
-    *   **Single Source of Truth:** `tasks.md` leads execution; `active_state.md` tracks context.
-    *   **Decision Log:** Only for "Fundamental Pivots" (Dependency/Schema/Deprecation).
-*   **Project Instance:** `PROJECT_LEARNINGS.md`, `DECISION_LOG.md`, and `CHANGELOG.md` for *this* repo are in the root.
+*   **Documentation Complete:** `README.md` now features an accurate Directory Tree and Mermaid Diagram reflecting v3.1 logic.
+*   **Structure Harmonized:** The split between "Distributable" (`coding/`) and "Instance" (`root`) is fully documented.
+*   **State:** The system is clean, stable, and ready for a pilot run.
 
 ## 👉 Next Steps
-1.  **Validation:** Use the framework in a real "Pilot" project to verify if the "Single Source of Truth" logic actually reduces friction as intended.
-2.  **Monitor:** Watch for "Decision Log" usage. Is the "Dependency/Schema" trigger too strict or too loose?
+1.  **Pilot:** Execute a complex task using the full v3.1 framework to validate the "Single Source of Truth" flow in practice.
+2.  **Monitor:** Check if the "Decision Log" criteria (Dependency/Schema) are clear enough for an AI to self-trigger.
