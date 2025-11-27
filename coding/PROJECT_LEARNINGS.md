@@ -47,6 +47,10 @@ This document tracks the architectural and procedural evolution of the project. 
 - **Issue:** Relying on external template files caused "File Not Found" errors on the first run.
 - **Pattern:** **Zero-Dependency Directives.** The markdown structure for state files is now embedded directly in the directive text.
 
+### 2.4. Single Source of Truth for Tasks
+- **Issue:** Duplicating task lists in `active_state.md` and `tasks.md` created "Split Brain" and wasted tokens.
+- **Pattern:** **No Duplication.** `tasks.md` is the sole owner of execution status (`[ ]` vs `[x]`). `active_state.md` tracks high-level Phase and Learnings only.
+
 ---
 
 ## 3. Anti-Patterns (What Failed)

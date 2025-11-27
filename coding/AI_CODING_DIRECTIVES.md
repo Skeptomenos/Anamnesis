@@ -47,13 +47,14 @@ This phase replaces ephemeral logging with active state management to ensure con
 ```markdown
 # 🟢 Active Session State
 **Objective:** [Concise Goal]
-**Status:** [Planning | In Progress | Debugging]
+**Status:** [Planning | Spec | Build | Verify]
 
 ## 🛡️ Applied Constraints
 - [Constraint 1 from PROJECT_LEARNINGS.md]
 
-## 📝 Current Task (from docs/specs/tasks.md)
-- [ ] [Active Task ID]
+## 📝 Current Focus
+*   **Phase:** [Current Phase]
+*   **Ref:** See `docs/specs/tasks.md` for detailed execution status.
 
 ## 🧠 Context & Learnings
 *   [Telegraphic Notes: Errors, findings, scratchpad]
@@ -61,6 +62,7 @@ This phase replaces ephemeral logging with active state management to ensure con
 
 **0.3: State Maintenance (The Heartbeat)**
 - **Update Strategy:** You must update `.context/active_state.md` **at the end of every logical block of work** (e.g., after planning, after coding a module, after testing).
+- **No Duplication Rule:** Do not copy the full task list from `tasks.md` into `active_state.md`. Use `active_state.md` for **High-Level Goals** and **Learnings/Errors**. The `tasks.md` file is the Source of Truth for execution status.
 - **Batching:** You may perform multiple related actions (edit 3 files) before updating the state, but you **MUST** update it before asking the user for input or ending your turn.
 - **Style:** Use **Telegraphic Style**. Maximize info/token.
 - **Why?** The tool call is your proof of work. If your session crashes, the next agent relies on this file.
@@ -154,7 +156,7 @@ These are the **Existential Rules** for ensuring agent reliability. Ignoring the
 2.  **Implement** ONLY that single task.
 3.  **Verify** (Unit Test / Manual Check).
 4.  **Mark** as `[x]` in `tasks.md`.
-5.  **Update** `.context/active_state.md`.
+5.  **Update** `.context/active_state.md` **ONLY** if there are new Learnings, Errors, or a Phase Change. (Do not update just to say "Task Done" -> the `[x]` is sufficient).
 6.  **STOP** to plan the next step or Proceed if clear.
 
 **2.2: Construction Order (Atoms First)**
