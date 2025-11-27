@@ -13,15 +13,16 @@ This repository is a **Knowledge Base** containing the "Operating System" for an
 
 ### 1. The Process (`coding/AI_CODING_DIRECTIVES.md`)
 This is the primary directive file. It enforces a 5-phase lifecycle for every task:
-*   **Phase 0 (The Brain):** Active State Management via `.context/active_state.md`.
-*   **Phase 1 (First Principles):** Recursive Decomposition of problems into "Atomic Units" (Pure Logic) before planning.
-*   **Phase 2 (Build):** "Atoms First" construction order.
-*   **Phase 3 (Verify):** Two-Tiered Testing (Unit vs. Contract).
+*   **Phase 0 (The Brain):** Active State Management & Spec Checks.
+*   **Phase 1 (The Blueprint):** "Spec Loop" (Product -> Tech -> Req -> Tasks) & "Consensus Gate" (Stop & Wait).
+*   **Phase 2 (The Build):** "Stop-and-Wait" Execution of atomic tasks.
+*   **Phase 3 (Verify):** Two-Tiered Testing & Drift Detection.
 *   **Phase 4 (Epilogue):** "Definition of Done" loop requiring documentation updates and learning synthesis.
 
 ### 2. The Law (`coding/CODING_STANDARDS.md`)
 Defines the non-negotiable quality standards:
 *   **Style:** Strict Linting, Type Hints (Python/TS), and no "Telegraphic Style" in comments.
+*   **Specs:** EARS Syntax for Requirements, Mermaid for Diagrams.
 *   **Security:** Zero-trust for secrets (Env vars only).
 *   **Git:** Conventional Commits required.
 
@@ -31,9 +32,10 @@ A growing knowledge base of project-specific constraints.
 *   **Goal:** Prevent the "Three Strikes" loop where an AI repeats the same mistake endlessly.
 
 ### 4. The Context (`docs/templates/`)
-Standardized templates for state files:
+Standardized templates for state and specs:
 *   `active_state.md`: The "Hot" scratchpad for the current session.
-*   `handover.md`: The "Baton" for passing context to the next agent.
+*   `handover.md`: The "Baton" for passing context.
+*   `spec_*.md`: The "Spec Suite" (Product, Tech, Requirements, Tasks).
 
 ---
 
@@ -71,21 +73,24 @@ To "install" this brain into a new software project:
 
 ## 🔑 Key Concepts
 
-*   **Telegraphic Style:** Internal context files (`active_state.md`) use concise, bulleted text to save tokens ("Server crash. Retry fail.").
-*   **Atomic Units:** Small, pure-logic components that have zero external dependencies, allowing for fast, mock-free unit tests.
-*   **Epilogue Protocol:** A mandatory cleanup phase where the Agent updates docs, learns from mistakes, and archives its session before quitting.
-*   **Archival Rotation:** Moving finished state files to `.context/history/` to keep the context window clean while preserving an audit trail.
+*   **Spec-Driven Development (SDD):** No code is written without a persistent "Source of Truth" in `docs/specs/`.
+*   **Consensus Gate:** A mandatory protocol where the AI must stop, summarize the plan, and await user approval before coding.
+*   **Telegraphic Style:** Internal context files (`active_state.md`) use concise, bulleted text to save tokens.
+*   **Atomic Units:** Small, pure-logic components that have zero external dependencies.
+*   **Epilogue Protocol:** A mandatory cleanup phase where the Agent updates docs, learns from mistakes, and archives its session.
+*   **Archival Rotation:** Moving finished state files to `.context/history/` to keep the context window clean.
 
 ## 📂 File Structure
 
 ```text
 .
 ├── coding/
-│   ├── AI_CODING_DIRECTIVES.md  # The primary AI instruction set
-│   ├── CODING_STANDARDS.md      # Syntax and Quality rules
+│   ├── AI_CODING_DIRECTIVES.md  # The primary AI instruction set (v3)
+│   ├── CODING_STANDARDS.md      # Syntax, Quality, and Spec rules
 │   └── PROJECT_LEARNINGS.md     # Project-specific constraints
 ├── docs/
-│   ├── templates/               # Templates for state files
+│   ├── specs/                   # The Source of Truth (Product, Tech, Req, Tasks)
+│   ├── templates/               # Templates for state and specs
 │   └── DECISION_LOG.md          # Architectural Decision Records
 └── README.md                    # User-facing documentation
 ```
