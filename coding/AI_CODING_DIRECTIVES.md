@@ -201,7 +201,7 @@ You are **NOT** done until you have executed this sequence:
 **4.1: Documentation Sync (Audit Trail)**
 - [ ] **Spec Check:** Ensure `docs/specs/*` reflect the final codebase.
 - [ ] **User Facing:** Update `CHANGELOG.md` if features or usage changed. (Professional Tone, **Non-destructive Update**)
-- [ ] **Dev Facing:** Append to `docs/DECISION_LOG.md` if you made architectural trade-offs. (Telegraphic Tone)
+- [ ] **Decision Record:** If you added a **Dependency**, changed the **DB Schema**, or **Deprecated** a pattern, append to `DECISION_LOG.md`. (Telegraphic Tone)
 - [ ] **Code Facing:** Ensure docstrings match the new code reality. (Professional Tone)
 
 **4.2: Recursive Learning (Synthesis)**
