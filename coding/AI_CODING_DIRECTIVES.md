@@ -139,6 +139,13 @@ These are the **Existential Rules** for ensuring agent reliability. Ignoring the
 - **Rule:** Pipelines must be destructive. Wipe the database/cache before a full run, or use strict upsert logic.
 - **Directive:** Assume the database is dirty. State-based snapshots > Event-based replays.
 
+**1.5.4: The "Preservation of Knowledge" Rule**
+- **Context:** AI Agents often "truncate" or "overwrite" documentation, losing historical context.
+- **Rule:** When updating Documentation (README, Specs, Learnings), you must **APPEND** or **REFINE**.
+    - **NEVER** delete existing sections without explicit permission.
+    - **NEVER** rewrite a file from scratch if only one section changed (use `replace` or targeted edits).
+    - If content is obsolete, mark it `> **Deprecated:** ...` rather than deleting it.
+
 ---
 
 ### Phase 2: Build & Implement (THE STOP-AND-WAIT)
@@ -192,7 +199,7 @@ You are **NOT** done until you have executed this sequence:
 
 **4.1: Documentation Sync (Audit Trail)**
 - [ ] **Spec Check:** Ensure `docs/specs/*` reflect the final codebase.
-- [ ] **User Facing:** Update `CHANGELOG.md` if features or usage changed. (Professional Tone)
+- [ ] **User Facing:** Update `CHANGELOG.md` if features or usage changed. (Professional Tone, **Non-destructive Update**)
 - [ ] **Dev Facing:** Append to `docs/DECISION_LOG.md` if you made architectural trade-offs. (Telegraphic Tone)
 - [ ] **Code Facing:** Ensure docstrings match the new code reality. (Professional Tone)
 
