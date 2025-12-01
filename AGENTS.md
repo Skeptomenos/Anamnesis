@@ -16,7 +16,7 @@ Anamnesis solves the core problems of AI-assisted coding:
 - **Vibe Coding** → Consensus Gates and structured protocols
 - **Monolithic Code** → Atomic decomposition and modularity
 
-**Version:** 3.1
+**Version:** 4.0
 
 ## Tech Stack
 
@@ -28,9 +28,10 @@ Anamnesis solves the core problems of AI-assisted coding:
 
 ```
 coding/                      # The Framework (distributable)
-├── AI_CODING_DIRECTIVES.md  # Core process (v3.1)
-├── CODING_STANDARDS.md      # Quality rules (v3.1)
-└── templates/               # All templates (13 files)
+├── THINKING_DIRECTIVES.md   # First Principles & Design (v4)
+├── EXECUTION_DIRECTIVES.md  # Build & Deliver (v4)
+├── CODING_STANDARDS.md      # Quality rules (v4)
+└── templates/               # All templates (15 files)
 
 docs/                        # Research and documentation
 .context/                    # Session state management
@@ -62,9 +63,11 @@ For simple questions or read-only tasks, skip the full protocol and act immediat
 
 | When | Read |
 |------|------|
-| Modifying framework | `coding/AI_CODING_DIRECTIVES.md` |
-| Writing documentation | `coding/CODING_STANDARDS.md` |
-| Understanding history | `PROJECT_LEARNINGS.md` |
+| New idea, new feature, major refactor | `coding/THINKING_DIRECTIVES.md` |
+| Complex bug (root cause unclear) | `coding/THINKING_DIRECTIVES.md` (Phase T1-RCA) |
+| Implementation of defined plan | `coding/EXECUTION_DIRECTIVES.md` |
+| Writing/reviewing code | `coding/CODING_STANDARDS.md` |
+| Project-specific constraints | `PROJECT_LEARNINGS.md` |
 
 ---
 

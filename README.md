@@ -114,39 +114,48 @@ The framework uses a **Progressive Disclosure** pattern to optimize AI context u
 | Layer | File | When Loaded | Purpose |
 |-------|------|-------------|---------|
 | **Root** | `AGENTS.md` | Always (auto-loaded) | Essential context, golden rules, pointers |
-| **Detail** | `coding/AI_CODING_DIRECTIVES.md` | Complex tasks | Full 5-phase protocol |
+| **Thinking** | `coding/THINKING_DIRECTIVES.md` | New ideas, features, refactors, complex bugs | First Principles & Design Thinking |
+| **Execution** | `coding/EXECUTION_DIRECTIVES.md` | Implementation tasks | Build, test, deliver protocols |
 | **Quality** | `coding/CODING_STANDARDS.md` | Code writing | Style and quality rules |
 | **Wisdom** | `PROJECT_LEARNINGS.md` | Every session | Project-specific constraints |
 
-**Why?** LLMs have limited instruction-following capacity (~150-200 instructions). Auto-loading a 200+ line directives file would exceed this budget. The slim root file (~100 lines) provides essential context, and detailed protocols are read only when needed.
+**Why?** LLMs have limited instruction-following capacity (~150-200 instructions). The slim root file (~100 lines) provides essential context, and detailed protocols are read only when needed. The separation of Thinking and Execution allows different cognitive modes for different tasks.
 
 ---
 
 ## 🧠 The Core Components
 
-### 1. `AI_CODING_DIRECTIVES.md` (The Process)
+### 1. `THINKING_DIRECTIVES.md` (The Mind)
 
-This is the operating system (v3.1). It enforces:
-- **Spec-Driven Development (SDD):** No code is written without a persistent "Source of Truth" in `docs/specs/`.
-- **First Principles:** Forces the AI to decompose problems into pure logic ("Atomic Units") before writing any I/O code.
+This guides problem decomposition BEFORE implementation (v4.0):
+- **First Principles:** Strip problems to fundamental truths before building solutions.
+- **Design Thinking:** Understand users, define problems clearly, explore options.
+- **Root Cause Analysis:** Structured debugging for complex bugs.
+- **Consensus Gate:** Present thinking summary and WAIT for user validation.
+
+### 2. `EXECUTION_DIRECTIVES.md` (The Hands)
+
+This guides implementation AFTER thinking is complete (v4.0):
+- **Spec-Driven Development (SDD):** No code without a persistent "Source of Truth".
 - **State Management:** Uses `.context/active_state.md` to track progress across sessions.
-- **Consensus Gate:** Forces the AI to stop and validate the plan with the user before implementation.
+- **OODA Loop:** Observe, Orient, Decide, Act for debugging.
+- **OODA Stop-Gap:** After 3 failed iterations, assess confidence and potentially return to thinking.
 
-### 2. `CODING_STANDARDS.md` (The Quality)
+### 3. `CODING_STANDARDS.md` (The Quality)
 
 This defines the syntax rules:
 - **EARS Syntax:** Requirements must use "When... Then..." syntax to reduce ambiguity.
 - **Visual Architecture:** Complex flows require Mermaid.js diagrams.
 - **Two-Tiered Testing:** Strictly separates Unit Tests (fast, mocked) from Contract Tests (boundaries).
 
-### 3. `PROJECT_LEARNINGS.md` (The Wisdom)
+### 4. `PROJECT_LEARNINGS.md` (The Wisdom)
 
 This file gets smarter over time. It captures:
 - **Invariants:** Rules that must never be broken.
 - **Patterns:** Solutions that worked.
 - **Anti-Patterns:** Approaches that failed.
 
-### 4. `coding/templates/` (The Tools)
+### 5. `coding/templates/` (The Tools)
 
 Standardized templates for Spec-Driven Development:
 
@@ -159,6 +168,8 @@ Standardized templates for Spec-Driven Development:
 - `PROJECT_LEARNINGS.template.md` - Cumulative project wisdom seed
 
 **Spec Templates:**
+- `spec_problem.md` - Problem definition (User, Pain, Constraints)
+- `spec_options.md` - Solution alternatives considered
 - `spec_product.md` - The "Why" (User Persona, Anti-Goals)
 - `spec_tech.md` - The Constraints (Stack, Forbidden Libraries)
 - `spec_requirements.md` - The "What" (EARS Syntax)
@@ -192,6 +203,8 @@ DECISION_LOG.md              # Architectural decisions
 
 docs/
 └── specs/                   # Source of Truth (SDD)
+    ├── problem.md           # Problem definition
+    ├── options.md           # Solution alternatives
     ├── product.md           # The "Why" & "Vibe"
     ├── tech.md              # The Constraints
     ├── requirements.md      # The "What" (EARS Syntax)
@@ -199,9 +212,10 @@ docs/
     └── tasks.md             # The Plan
 
 coding/
-├── AI_CODING_DIRECTIVES.md  # Detailed phase protocols (v3.1)
-├── CODING_STANDARDS.md      # Code quality rules (v3.1)
-└── templates/               # All templates
+├── THINKING_DIRECTIVES.md   # First Principles & Design (v4)
+├── EXECUTION_DIRECTIVES.md  # Build & Deliver (v4)
+├── CODING_STANDARDS.md      # Code quality rules (v4)
+└── templates/               # All templates (15 files)
     ├── AGENTS.template.md
     ├── CLAUDE.template.md
     ├── GEMINI.template.md
@@ -210,6 +224,8 @@ coding/
     ├── handover.md
     ├── changelog.md
     ├── decision_log.md
+    ├── spec_problem.md
+    ├── spec_options.md
     ├── spec_product.md
     ├── spec_tech.md
     ├── spec_requirements.md

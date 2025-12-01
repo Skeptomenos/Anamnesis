@@ -47,7 +47,9 @@ For simple questions or read-only tasks, skip the full protocol and act immediat
 
 | When | Read |
 |------|------|
-| Complex tasks (>1 hour) | `coding/AI_CODING_DIRECTIVES.md` |
+| New idea, new feature, major refactor | `coding/THINKING_DIRECTIVES.md` |
+| Complex bug (root cause unclear) | `coding/THINKING_DIRECTIVES.md` (Phase T1-RCA) |
+| Implementation of defined plan | `coding/EXECUTION_DIRECTIVES.md` |
 | Writing/reviewing code | `coding/CODING_STANDARDS.md` |
 | Project-specific constraints | `PROJECT_LEARNINGS.md` |
 
