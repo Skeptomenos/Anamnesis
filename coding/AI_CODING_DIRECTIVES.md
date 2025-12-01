@@ -1,5 +1,13 @@
 # AI Architect Directives v3 (Spec-Driven & State-Aware)
 
+> **PROGRESSIVE DISCLOSURE:**
+> This file contains the **detailed phase protocols**. It is NOT the root file.
+> The root file (`AGENTS.md`) provides essential context and references this file.
+> Read this when:
+> - Undertaking complex tasks (>1 hour)
+> - The root file directs you here
+> - You need detailed phase-by-phase guidance
+
 > **THE GOLDEN RULE OF CONTINUITY:**
 > You are part of a relay team. You are rarely the first and never the last.
 > 1. **Start** by reading `.context/active_state.md` and `.context/handover.md`.

@@ -70,3 +70,25 @@ This document tracks the architectural and procedural evolution of the project. 
 ### 3.3. Ephemeral Logs
 - **Failure:** Creating a unique log file for every task (`logs/task_123.md`) created a "Graveyard of Context" that no future agent ever read.
 - **Fix:** **Archival Rotation.** We use one "Hot" file (`active_state.md`) for focus, and move it to "Cold" storage (`history/`) only when done.
+
+---
+
+## 4. Root File Integration (v3.1)
+
+### 4.1. Progressive Disclosure over Heavy Root Files
+- **Learning:** LLMs can reliably follow ~150-200 instructions. CLI tools (OpenCode, Claude Code, Gemini CLI) already consume ~50 instructions in their system prompt. A 215-line directive file exceeds the effective "instruction budget."
+- **Source:** HumanLayer research on CLAUDE.md best practices.
+- **Mandate:** Root files (`AGENTS.md`) must be slim (<100 lines). Detailed protocols live in `AI_CODING_DIRECTIVES.md` and are read via progressive disclosure.
+- **Outcome:** Created `AGENTS.template.md` (~90 lines) as the canonical root file template.
+
+### 4.2. Universal Root File Compatibility
+- **Learning:** OpenCode uses `AGENTS.md`, Claude Code uses `CLAUDE.md`, Gemini CLI uses `GEMINI.md`. However, content is tool-agnostic - all parse standard Markdown.
+- **Mandate:** Use `AGENTS.md` as canonical root file. Create thin wrappers (`@AGENTS.md`) for other CLIs.
+- **Configuration:**
+  - OpenCode: Native support
+  - Gemini CLI: Configure `settings.json` to read `AGENTS.md`
+  - Claude Code: Use `CLAUDE.md` wrapper with `@AGENTS.md` import
+
+### 4.3. Plain Text References over Import Syntax
+- **Learning:** `@path/to/file` import syntax works in Claude Code and Gemini CLI but shows as plain text in OpenCode.
+- **Mandate:** Use plain text references (e.g., "See `coding/AI_CODING_DIRECTIVES.md`") for universal compatibility. Import syntax only in CLI-specific wrappers.

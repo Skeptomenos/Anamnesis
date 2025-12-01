@@ -5,6 +5,22 @@ All notable changes to the **Anamnesis** framework will be documented in this fi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.1] - 2025-12-01
+### Added
+- **Root File Templates:** Created `AGENTS.template.md`, `CLAUDE.template.md`, `GEMINI.template.md` for multi-CLI tool support (OpenCode, Gemini CLI, Claude Code).
+- **Progressive Disclosure Architecture:** Root files are now slim (~100 lines) with pointers to detailed protocols. Reduces instruction budget consumption.
+- **Design Spec Template:** Created `spec_design.md` for Mermaid.js diagrams (sequence, state, component, data flow).
+- **CLI Tool Setup Guide:** Added comprehensive CLI configuration instructions to README.md.
+
+### Changed
+- **README.md Rewrite:** New structure with Quick Start, CLI Setup, Progressive Disclosure explanation, and full template listing.
+- **Template Reorganization:** Moved `PROJECT_LEARNINGS_TEMPLATE.md` to `coding/templates/PROJECT_LEARNINGS.template.md` for consistency.
+- **Directive Preambles:** Added progressive disclosure context to `AI_CODING_DIRECTIVES.md` and `CODING_STANDARDS.md`.
+- **Project Root File:** Replaced `GEMINI.md` with `AGENTS.md` as canonical root file. Added `CLAUDE.md` wrapper.
+
+### Removed
+- **GEMINI.md:** Replaced by `AGENTS.md` (configure Gemini CLI to read AGENTS.md or use GEMINI.template.md).
+
 ## [3.1.0] - 2025-11-27
 ### Added
 - **Harmonized Structure:** Consolidated all distributable framework files (Directives, Standards, Templates) into a single, portable `coding/` directory.

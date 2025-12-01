@@ -1,5 +1,9 @@
 # Coding Standards & Best Practices
 
+> **PROGRESSIVE DISCLOSURE:**
+> This file is referenced by the root file (`AGENTS.md`) for code quality rules.
+> Read this when writing or reviewing code.
+
 > **Application:** These standards apply to **all** code written in this project.
 > **Enforcement:** Code that violates these rules should be rejected during the Phase 3 (Verify) gate.
 
