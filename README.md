@@ -1,8 +1,8 @@
-# AI Coding Assistant: The "Senior Engineer" Framework (v3.1)
+# Anamnesis
 
-Welcome to the **AI Coding Framework**. This repository contains a rigorous set of directives and standards designed to turn any Large Language Model (LLM) into a **Spec-Driven** and **State-Aware** Senior Software Engineer.
+> A stateful, spec-driven framework for AI-assisted software engineering.
 
-This framework solves the common problems of AI coding: **Amnesia** (forgetting context), **Hallucination** (guessing), **Vibe Coding** (lack of specs), and **Monolithic Code** (bad architecture).
+This framework solves the core problems of AI-assisted coding: **Amnesia** (forgetting context), **Hallucination** (guessing), **Vibe Coding** (lack of specs), and **Monolithic Code** (bad architecture).
 
 ---
 
