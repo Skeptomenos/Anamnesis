@@ -48,14 +48,13 @@ Copy `coding/templates/CLAUDE.template.md` to your project root as `CLAUDE.md`
 
 ### 3. The Workflow You Will See
 
-Don't be alarmed if the AI doesn't start coding immediately. It is following a strict **Spec-Driven** protocol:
+Don't be alarmed if the AI doesn't start coding immediately. It follows a **Thinking → Execution** protocol:
 
-1. **Context Loading:** It reads `.context/active_state.md`.
-2. **Spec Loop:** For complex tasks, it will draft/update `docs/specs/` (Product, Tech, Requirements, Tasks).
-3. **Consensus Gate:** It will present a **Plan Summary** and **WAIT** for your approval.
-4. **Stop-and-Wait Execution:** It implements one task from `docs/specs/tasks.md` at a time.
-5. **Drift Detection:** It ensures code matches the Spec.
-6. **Epilogue:** It updates Docs, Changelog, and Learnings before quitting.
+1. **Context:** Loads state from `.context/` and constraints from `PROJECT_LEARNINGS.md`.
+2. **Thinking:** For complex tasks, enters First Principles mode—decomposes the problem, runs Elimination Test, explores options.
+3. **Consensus Gate:** Presents a **Plan Summary** and **WAITS** for your approval before any code.
+4. **Execution:** Implements tasks one-by-one from `docs/specs/tasks.md`, with OODA debugging if stuck.
+5. **Epilogue:** Updates docs, archives state, synthesizes learnings.
 
 ---
 
@@ -64,43 +63,43 @@ Don't be alarmed if the AI doesn't start coding immediately. It is following a s
 ```mermaid
 sequenceDiagram
     participant User
-    participant AI as AI Architect
-    participant State as .context/active_state.md
+    participant AI as AI Agent
+    participant Context as .context/
     participant Specs as docs/specs/
 
-    User->>AI: Prompt ("Build Feature X")
-    
-    rect rgb(30, 30, 30)
-    Note right of AI: Phase 0: Context
-    AI->>State: Read State & Constraints
+    User->>AI: Request
+
+    rect rgb(40, 40, 40)
+    Note right of AI: CONTEXT
+    AI->>Context: Load state & constraints
     end
 
-    alt Simple Task (< 1 hr)
-        AI->>User: Execute & Answer (Escape Hatch)
+    alt Simple Task
+        AI->>User: Answer (Escape Hatch)
     else Complex Task
-        rect rgb(20, 50, 80)
-        Note right of AI: Phase 1: Blueprint
-        AI->>Specs: Draft/Update Specs (Product, Tech, Req)
-        AI->>Specs: Create tasks.md (Execution Plan)
-        AI->>User: 🛑 Plan Summary & Request Approval
+        rect rgb(60, 30, 70)
+        Note right of AI: THINKING
+        AI->>AI: First Principles & Elimination Test
+        AI->>Specs: Draft problem.md, options.md
+        AI->>User: 🛑 Consensus Gate - WAIT
         end
         
-        User->>AI: "Proceed" (Consensus Gate)
+        User->>AI: Approved
 
-        loop Phase 2: Stop-and-Wait
-            AI->>Specs: Read Next Task from tasks.md
-            AI->>AI: Implement Atomic Unit
-            AI->>AI: Verify (Tests)
-            AI->>Specs: Mark [x] in tasks.md
-            AI->>User: "Task Complete. Continue?"
-            User->>AI: "Continue"
+        rect rgb(30, 50, 80)
+        Note right of AI: EXECUTION
+        loop Task by Task
+            AI->>Specs: Read → Build → Test → Mark Done
+            opt 3+ Failures
+                AI-->>AI: OODA Stop-Gap (may return to Thinking)
+            end
+        end
         end
 
-        rect rgb(20, 80, 20)
-        Note right of AI: Phase 4: Epilogue
-        AI->>Specs: Drift Detection (Code vs Spec)
-        AI->>State: Archive State & Update Learnings
-        AI->>User: "Session Closed."
+        rect rgb(30, 70, 40)
+        Note right of AI: EPILOGUE
+        AI->>Context: Archive state, update learnings
+        AI->>User: Session complete
         end
     end
 ```
@@ -119,7 +118,7 @@ The framework uses a **Progressive Disclosure** pattern to optimize AI context u
 | **Quality** | `coding/CODING_STANDARDS.md` | Code writing | Style and quality rules |
 | **Wisdom** | `PROJECT_LEARNINGS.md` | Every session | Project-specific constraints |
 
-**Why?** LLMs have limited instruction-following capacity (~150-200 instructions). The slim root file (~100 lines) provides essential context, and detailed protocols are read only when needed. The separation of Thinking and Execution allows different cognitive modes for different tasks.
+**Why?** LLMs have limited instruction-following capacity (~150-200 instructions). The slim root file (~70 lines) provides essential context, and detailed protocols are read only when needed. The separation of Thinking and Execution allows different cognitive modes for different tasks.
 
 ---
 
@@ -241,7 +240,7 @@ coding/
 - **The "Consensus Gate":** The AI will **STOP** after planning. You must explicitly say "Proceed" or "Approved" to start coding.
 - **The "Epilogue":** If the AI says "I'm done" but hasn't updated the docs, just type: **"Execute Epilogue."**
 - **Debug Loop:** If the AI gets stuck, it will enter the **OODA Loop** (Observe, Orient, Decide, Act). It will ask you to run commands to gather evidence. **Run them.**
-- **Root File Customization:** The `AGENTS.md` file should be customized for each project. Fill in your tech stack, common commands, and key constraints. The CLI configuration section at the bottom can be removed after initial setup.
+- **Root File Customization:** The `AGENTS.md` file should be customized for each project. Fill in your tech stack, common commands, and key constraints.
 
 ---
 
