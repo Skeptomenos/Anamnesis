@@ -42,7 +42,8 @@ docs/                        # Research and documentation
 1. **State:** Read `.context/active_state.md` at start, update at end
 2. **Non-Destructive:** Never delete documentation—append or refine
 3. **Naming:** UPPERCASE.template.md for root files, lowercase for specs
-4. **Dogfooding:** This project follows its own framework
+4. **Epilogue:** MANDATORY after feature/design completion. Includes reflective thinking (T-RFL), not just documentation.
+5. **Dogfooding:** This project follows its own framework
 
 > **ESCAPE HATCH:** Simple questions or read-only tasks → skip protocol, act immediately.
 

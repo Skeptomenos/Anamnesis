@@ -54,7 +54,7 @@ Don't be alarmed if the AI doesn't start coding immediately. It follows a **Thin
 2. **Thinking:** For complex tasks, enters First Principles mode—decomposes the problem, runs Elimination Test, explores options.
 3. **Consensus Gate:** Presents a **Plan Summary** and **WAITS** for your approval before any code.
 4. **Execution:** Implements tasks one-by-one from `docs/specs/tasks.md`, with OODA debugging if stuck.
-5. **Epilogue:** Updates docs, archives state, synthesizes learnings.
+5. **Epilogue:** Reflects on session (T-RFL), distills learnings, archives state.
 
 ---
 
@@ -97,8 +97,9 @@ sequenceDiagram
         end
 
         rect rgb(30, 70, 40)
-        Note right of AI: EPILOGUE
-        AI->>Context: Archive state, update learnings
+        Note right of AI: EPILOGUE (Reflect)
+        AI->>AI: T-RFL: Synthesize learnings
+        AI->>Context: Archive state, handover
         AI->>User: Session complete
         end
     end

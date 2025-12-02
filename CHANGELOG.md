@@ -13,6 +13,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - "Ruthless prioritization" (minimal problem worth solving)
 - **Clean Slate Question:** Added "What would we build with zero legacy constraints?" to T1.2
 - **Operational Mandates Section:** New Section 9 in `CODING_STANDARDS.md` consolidating reliability rules
+- **Phase T-RFL (Reflection):** New lightweight phase in `THINKING_DIRECTIVES.md` for Epilogue synthesis:
+  - T-RFL.1: Session Review (what worked, what didn't, what surprised)
+  - T-RFL.2: Pattern Extraction (Learning/Mandate/Outcome format)
+  - T-RFL.3: Decision Distillation (ADR triggers include "significant trade-off")
+  - T-RFL.4: Handover Synthesis
+- **Epilogue Enforcement:** Epilogue is now MANDATORY with explicit callout in EXECUTION_DIRECTIVES
 
 ### Changed
 - **AGENTS.template.md:** Compressed from 112 to 63 lines (44% reduction)
@@ -24,14 +30,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **EXECUTION_DIRECTIVES.md:** Compressed from 288 to 247 lines (14% reduction)
   - Moved Phase 1.5 (Operational Mandates) to CODING_STANDARDS.md
   - Compressed active_state template from 15 to 5 lines
-- **THINKING_DIRECTIVES.md:** Light compression from 256 to 248 lines (3% reduction)
+  - Phase 4.2 now references T-RFL for reflective learning
+- **THINKING_DIRECTIVES.md:** Added Phase T-RFL (~40 lines)
   - Compressed T4 artifact table and checklist
 - **CODING_STANDARDS.md:** Added 30 lines for Section 9 (141 → 171 lines)
+- **README.md:** Updated Mermaid diagram to show Thinking/Execution/Epilogue flow
+- **Golden Rules:** Epilogue rule updated to emphasize mandatory reflective thinking
 
 ### Rationale
 - Token frugality: Directive files are read repeatedly; compression saves context
 - Consolidated mandates: All reliability rules now in one location
 - Preserved enforcement: MUST, CRITICAL, STOP, WAIT keywords retained
+- Reflective Epilogue: Ensures genuine insight extraction, not mechanical documentation
 
 ## [4.0.0] - 2025-12-02
 ### Added

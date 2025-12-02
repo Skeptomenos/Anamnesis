@@ -31,7 +31,7 @@ coding/        # AI framework
 1. **State:** Read `.context/active_state.md` at start, update at end
 2. **Specs:** Complex tasks (>1hr) require `docs/specs/`. No code without spec.
 3. **Consensus:** Present plan, WAIT for approval before coding
-4. **Epilogue:** Update docs, archive state, synthesize learnings
+4. **Epilogue:** MANDATORY after feature/design completion. Includes reflective thinking (T-RFL), not just documentation.
 
 > **ESCAPE HATCH:** Simple questions or read-only tasks → skip protocol, act immediately.
 

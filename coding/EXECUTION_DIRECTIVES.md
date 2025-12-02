@@ -225,23 +225,25 @@ Do not plan the solution until you have deconstructed the problem.
 
 ## Phase 4: Delivery & Epilogue (DEFINITION OF DONE)
 
+> **EPILOGUE IS MANDATORY:** This phase is NOT optional cleanup. It includes reflective thinking (see `THINKING_DIRECTIVES.md` Phase T-RFL) to extract genuine insights. Skipping Epilogue means the work is incomplete.
+
 You are **NOT** done until you have executed this sequence:
 
-### 4.1: Documentation Sync (Audit Trail)
+### 4.1: Documentation Sync
 
-- [ ] **Spec Check:** Ensure `docs/specs/*` reflect the final codebase.
-- [ ] **User Facing:** Update `CHANGELOG.md` if features or usage changed. (Professional Tone, **Non-destructive Update**)
-- [ ] **Decision Record:** If you added a **Dependency**, changed the **DB Schema**, or **Deprecated** a pattern, append to `DECISION_LOG.md`. (Telegraphic Tone)
-- [ ] **Code Facing:** Ensure docstrings match the new code reality. (Professional Tone)
+- [ ] **Spec Check:** Ensure `docs/specs/*` reflect the final codebase
+- [ ] **User Facing:** Update `CHANGELOG.md` if features changed (professional tone)
+- [ ] **Decision Record:** If dependency/schema/deprecation/**significant trade-off** occurred → `DECISION_LOG.md`
+- [ ] **Code Facing:** Ensure docstrings match code reality
 
-### 4.2: Recursive Learning (Synthesis)
+### 4.2: Reflective Learning (T-RFL)
 
-- [ ] **Reflect:** Review your session in `.context/active_state.md`.
-- [ ] **Extract:** Identify **one** reusable pattern or anti-pattern.
-- [ ] **Commit:** Update `PROJECT_LEARNINGS.md` with this new rule. (Do not dump logs; distill wisdom). (Telegraphic Tone)
+- [ ] **Engage T-RFL:** Read `THINKING_DIRECTIVES.md` Phase T-RFL
+- [ ] **Reflect:** What worked? What didn't? What surprised?
+- [ ] **Extract:** Identify ONE reusable pattern or anti-pattern
+- [ ] **Commit:** Update `PROJECT_LEARNINGS.md` (Learning/Mandate/Outcome format, telegraphic)
 
-### 4.3: Archival Rotation (Continuity)
+### 4.3: Archival Rotation
 
-- [ ] **Preparation:** Ensure `.context/history/` directory exists.
-- [ ] **Archive:** Move `.context/active_state.md` to `.context/history/YYYY-MM-DD_TaskName.md`.
-- [ ] **Handover:** Create/Overwrite `.context/handover.md` with a 3-bullet summary of "Where we are" and "Next Steps" for the next agent. (Telegraphic Tone)
+- [ ] **Archive:** Move `.context/active_state.md` to `.context/history/YYYY-MM-DD_TaskName.md`
+- [ ] **Handover:** Update `.context/handover.md` — Where are we? What's next? (3 bullets max)

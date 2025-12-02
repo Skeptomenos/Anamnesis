@@ -246,3 +246,45 @@ Before coding, ensure these exist:
 - [ ] Ready for `EXECUTION_DIRECTIVES.md`
 
 **Next:** Read `coding/EXECUTION_DIRECTIVES.md` to begin implementation.
+
+---
+
+## Phase T-RFL: Reflection (Epilogue Synthesis)
+
+> **Use when:** Called from EXECUTION_DIRECTIVES Phase 4, after T3 completion, or at session end. This is reflective thinking, not mechanical documentation.
+
+### T-RFL.1: Session Review
+
+- What was the objective? Was it achieved?
+- What worked? What didn't?
+- What was surprising or unexpected?
+
+### T-RFL.2: Pattern Extraction
+
+Ask: "What ONE reusable insight emerged from this work?"
+
+- **If pattern:** How can it be applied to future work?
+- **If anti-pattern:** What caused it? How to prevent recurrence?
+
+**Output:** Add to `PROJECT_LEARNINGS.md` using format:
+```
+### X.X. [Title]
+- **Learning:** [What we discovered]
+- **Mandate:** [What to do/not do going forward]
+- **Outcome:** [How this changes behavior]
+```
+
+### T-RFL.3: Decision Distillation
+
+If any of these occurred, formulate an ADR for `DECISION_LOG.md`:
+
+- Dependency added or removed
+- Schema or data structure changed
+- Pattern or approach deprecated
+- Significant trade-off made (chose X over Y with consequences)
+
+### T-RFL.4: Handover Synthesis
+
+Distill for the next agent (`.context/handover.md`):
+- **Where are we?** (3 bullets max)
+- **What's next?** (Concrete next steps)
