@@ -64,6 +64,9 @@ Before proceeding, explicitly challenge:
   - Is this solution based on first principles or analogy?
   - Would we design it this way if starting fresh?
 
+- **"What would we build if we started fresh with zero legacy constraints?"**
+  - Ignore what exists today—what's the ideal?
+
 ### T1.3: Identify the "Physics"
 
 Document the fundamental truths:
@@ -71,6 +74,11 @@ Document the fundamental truths:
 - **Invariants:** What must ALWAYS be true?
 - **Trade-offs:** What tensions exist? (Speed vs accuracy, flexibility vs simplicity)
 - **Failure modes:** What would break if we got this wrong?
+
+> **THE ELIMINATION TEST (Required before T2):**
+> 1. **Who requested this?** Name a person, not a department. If "assumed"—challenge it.
+> 2. **What can be removed entirely?** Not simplified—removed. If nothing, you haven't pushed hard enough.
+> 3. **Ruthless prioritization:** What is the MINIMAL problem worth solving? Everything else is cut until proven essential.
 
 **Output:** Document findings in `docs/specs/problem.md` using the template.
 
