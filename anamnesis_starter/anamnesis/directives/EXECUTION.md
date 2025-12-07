@@ -4,7 +4,7 @@
 > This file guides implementation AFTER thinking is complete.
 > The root file (`AGENTS.md`) references this file for execution tasks.
 > Read this when:
-> - Implementing a plan from THINKING_DIRECTIVES
+> - Implementing a plan from THINKING.md
 > - Simple to moderate bug fixes
 > - Following existing specifications
 > - Continuing work from a previous session
@@ -21,7 +21,7 @@
 
 ## When to RETURN to Thinking
 
-**Stop execution and read `THINKING_DIRECTIVES.md` when:**
+**Stop execution and read `anamnesis/directives/THINKING.md` when:**
 
 - Fundamental assumption proven wrong
 - Requirements conflict discovered
@@ -35,13 +35,13 @@
 
 > **THE GOLDEN RULE OF CONTINUITY:**
 > You are part of a relay team. You are rarely the first and never the last.
-> 1. **Start** by reading `.context/active_state.md` and `.context/handover.md`.
-> 2. **Work** by updating `.context/active_state.md` when you complete a logical block of work.
+> 1. **Start** by reading `anamnesis/.context/active_state.md` and `anamnesis/.context/handover.md`.
+> 2. **Work** by updating `anamnesis/.context/active_state.md` when you complete a logical block of work.
 > 3. **Finish** by executing the Epilogue Protocol to preserve knowledge for the next agent.
 > **If you fail to update these files, your work is considered lost.**
 
 > **THE TELEGRAPHIC RULE (INTERNAL CONTEXT):**
-> When writing to `.context/` files or `PROJECT_LEARNINGS.md`:
+> When writing to `anamnesis/.context/` files or `anamnesis/PROJECT_LEARNINGS.md`:
 > - **Be extremely concise.** Sacrifice grammar for density (e.g., "Server crashed. Retry failed." > "The server appears to have crashed...").
 > - **Use bullet points.** Avoid paragraphs.
 > - **Exceptions:** Maintain professional, complete sentences for **Code Docstrings** and **User-Facing Docs** (README, CHANGELOG) and **Specs** (requirements.md).
@@ -62,34 +62,33 @@ This phase ensures continuity and learning across sessions.
 - **Environment Check:** Verify your surroundings.
     - Run `ls -F` to see immediate context.
     - Run `git status` to ensure a clean slate (or understand current diffs).
-- **Check State:** Read `.context/active_state.md`.
-    - *Scenario A (Empty):* Read `.context/handover.md` (if exists) to get context. Initialize `.context/active_state.md` using the **Template** below.
+- **Check State:** Read `anamnesis/.context/active_state.md`.
+    - *Scenario A (Empty):* Read `anamnesis/.context/handover.md` (if exists) to get context. Initialize `anamnesis/.context/active_state.md` using the **Template** from `anamnesis/templates/active_state.md`.
     - *Scenario B (Content Exists):* Compare the User's Prompt with the `Objective` in the file.
         - **IF** the prompt is a sub-task/continuation: **RESUME** work (Update "Current Step").
-        - **IF** the prompt is a NEW, unrelated objective: **ARCHIVE** the old state (move to `.context/history/`) and **RESET** `.context/active_state.md` with the new Objective.
-- **Check Constraints:** Read `PROJECT_LEARNINGS.md`.
+        - **IF** the prompt is a NEW, unrelated objective: **ARCHIVE** the old state (move to `anamnesis/.context/history/`) and **RESET** `anamnesis/.context/active_state.md` with the new Objective.
+- **Check Constraints:** Read `anamnesis/PROJECT_LEARNINGS.md`.
     - **IF EMPTY:** Log "No prior constraints found" in your state.
     - **IF CONTENT EXISTS:** Identify 1-3 **Applied Constraints** relevant to this task and list them in your active state.
 
 ### 0.2: Spec Check
 
-- **For NEW features/projects:** Ensure `THINKING_DIRECTIVES.md` was followed first. Check that `docs/specs/problem.md` and `docs/specs/options.md` exist.
-- **For implementation:** Load existing specs from `docs/specs/`.
+- **For NEW features/projects:** Ensure `anamnesis/directives/THINKING.md` was followed first. Check that `anamnesis/specs/problem.md` and `anamnesis/specs/options.md` exist.
+- **For implementation:** Load existing specs from `anamnesis/specs/`.
     - Read `product.md` (Why) and `tech.md` (Constraints) to load the "System Constraints".
-    - **IF MISSING:** Suggest creating specs using `coding/templates/spec_*.md`.
+    - **IF MISSING:** Suggest creating specs in `anamnesis/specs/`.
 
-**Template for `.context/active_state.md`:**
-```markdown
-# Active State
-**Objective:** [Goal] | **Status:** [Planning|Spec|Build|Verify] | **Phase:** [Current]
-## Constraints: [From PROJECT_LEARNINGS.md]
-## Learnings: [Telegraphic: errors, findings, decisions]
-```
+**Template for `anamnesis/.context/active_state.md`:**
+
+See `anamnesis/templates/active_state.md` for the full template. Key sections:
+- **Current Objective** — What we're building (references `anamnesis/.context/mission.md`)
+- **Iteration Log** — Significant experiments and learnings
+- **Pre-Close Checklist** — Quality gate before closing work
 
 ### 0.3: State Maintenance (The Heartbeat)
 
-- **Update Strategy:** You must update `.context/active_state.md` **at the end of every logical block of work** (e.g., after planning, after coding a module, after testing).
-- **No Duplication Rule:** Do not copy the full task list from `tasks.md` into `active_state.md`. Use `active_state.md` for **High-Level Goals** and **Learnings/Errors**. The `tasks.md` file is the Source of Truth for execution status.
+- **Update Strategy:** You must update `anamnesis/.context/active_state.md` **at the end of every logical block of work** (e.g., after planning, after coding a module, after testing).
+- **No Duplication Rule:** Do not copy the full task list from `anamnesis/specs/tasks.md` into `active_state.md`. Use `active_state.md` for **High-Level Goals** and **Learnings/Errors**. The `tasks.md` file is the Source of Truth for execution status.
 - **Batching:** You may perform multiple related actions (edit 3 files) before updating the state, but you **MUST** update it before asking the user for input or ending your turn.
 - **Style:** Use **Telegraphic Style**. Maximize info/token.
 
@@ -98,7 +97,7 @@ This phase ensures continuity and learning across sessions.
 When an action fails, **DO NOT** guess.
 
 1. **Observe:** Gather evidence (screenshot, HTML source, error trace) via shell commands (`ls`, `grep`) or file reads.
-2. **Orient:** State explicitly in `.context/active_state.md` why your mental model was wrong based on the evidence.
+2. **Orient:** State explicitly in `anamnesis/.context/active_state.md` why your mental model was wrong based on the evidence.
 3. **Decide:** Formulate a single, testable hypothesis.
 4. **Act:** Implement the minimal change to test that hypothesis.
 
@@ -112,7 +111,7 @@ When an action fails, **DO NOT** guess.
 
 | Confidence | Action |
 |------------|--------|
-| < 50% | **Return to Thinking.** Read `THINKING_DIRECTIVES.md` Phase T1-RCA. Reassess fundamentals. |
+| < 50% | **Return to Thinking.** Read `anamnesis/directives/THINKING.md` Phase T1-RCA. Reassess fundamentals. |
 | 50-80% | **Consult User.** Present your hypothesis and ask for guidance or additional context. |
 | > 80% | **Continue** with explicit justification for why you believe the next attempt will succeed. |
 
@@ -124,7 +123,7 @@ Do not plan the solution until you have deconstructed the problem.
 
 ### 1.1: The Spec Loop
 
-- **For NEW work:** Verify thinking phase is complete. Check for `docs/specs/problem.md` and `docs/specs/options.md`.
+- **For NEW work:** Verify thinking phase is complete. Check for `anamnesis/specs/problem.md` and `anamnesis/specs/options.md`.
 - **Artifacts:**
     - `problem.md`: The problem definition, assumptions, constraints.
     - `options.md`: Solution alternatives considered.
@@ -138,7 +137,7 @@ Do not plan the solution until you have deconstructed the problem.
 
 ### 1.2: Recursive Decomposition (The Knife)
 
-- **Decompose:** Break complex requests down into **Atomic Units** in `tasks.md`.
+- **Decompose:** Break complex requests down into **Atomic Units** in `anamnesis/specs/tasks.md`.
 - **Granularity:** Each task must be < 1 hour execution.
 - **Inline Constraints:** Do not just link to specs. **Copy** the relevant constraints into the task.
     - *Bad:* "Implement Login (see tech.md)"
@@ -167,7 +166,7 @@ Do not plan the solution until you have deconstructed the problem.
 
 ---
 
-> **OPERATIONAL MANDATES:** For reliability rules (I/O Fortress, Clean Slate, Hybrid First, Preservation of Knowledge), see `CODING_STANDARDS.md` Section 9.
+> **OPERATIONAL MANDATES:** For reliability rules (I/O Fortress, Clean Slate, Hybrid First, Preservation of Knowledge), see `anamnesis/standards/global.md` Section 9.
 
 ---
 
@@ -175,11 +174,11 @@ Do not plan the solution until you have deconstructed the problem.
 
 ### 2.1: The Protocol
 
-1. **Read** `tasks.md`. Identify the next **PENDING** task.
+1. **Read** `anamnesis/specs/tasks.md`. Identify the next **PENDING** task.
 2. **Implement** ONLY that single task.
 3. **Verify** (Unit Test / Manual Check).
-4. **Mark** as `[x]` in `tasks.md`.
-5. **Update** `.context/active_state.md` **ONLY** if there are new Learnings, Errors, or a Phase Change.
+4. **Mark** as `[x]` in `anamnesis/specs/tasks.md`.
+5. **Update** `anamnesis/.context/active_state.md` **ONLY** if there are new Learnings, Errors, or a Phase Change.
 6. **STOP** to plan the next step or Proceed if clear.
 
 ### 2.2: Construction Order (Atoms First)
@@ -216,34 +215,34 @@ Do not plan the solution until you have deconstructed the problem.
 
 ### 3.3: Drift Detection (Reverse-Sync)
 
-- **Check:** Does the implemented code contradict `requirements.md`?
+- **Check:** Does the implemented code contradict `anamnesis/specs/requirements.md`?
 - **Action:**
     - *If Code is Wrong:* Fix Code.
-    - *If Spec is Wrong (Justified):* **Update `requirements.md`** to match reality.
+    - *If Spec is Wrong (Justified):* **Update `anamnesis/specs/requirements.md`** to match reality.
 
 ---
 
 ## Phase 4: Delivery & Epilogue (DEFINITION OF DONE)
 
-> **EPILOGUE IS MANDATORY:** This phase is NOT optional cleanup. It includes reflective thinking (see `THINKING_DIRECTIVES.md` Phase T-RFL) to extract genuine insights. Skipping Epilogue means the work is incomplete.
+> **EPILOGUE IS MANDATORY:** This phase is NOT optional cleanup. It includes reflective thinking (see `anamnesis/directives/THINKING.md` Phase T-RFL) to extract genuine insights. Skipping Epilogue means the work is incomplete.
 
 You are **NOT** done until you have executed this sequence:
 
 ### 4.1: Documentation Sync
 
-- [ ] **Spec Check:** Ensure `docs/specs/*` reflect the final codebase
+- [ ] **Spec Check:** Ensure `anamnesis/specs/*` reflect the final codebase
 - [ ] **User Facing:** Update `CHANGELOG.md` if features changed (professional tone)
-- [ ] **Decision Record:** If dependency/schema/deprecation/**significant trade-off** occurred → `DECISION_LOG.md`
+- [ ] **Decision Record:** If dependency/schema/deprecation/**significant trade-off** occurred → `anamnesis/DECISION_LOG.md`
 - [ ] **Code Facing:** Ensure docstrings match code reality
 
 ### 4.2: Reflective Learning (T-RFL)
 
-- [ ] **Engage T-RFL:** Read `THINKING_DIRECTIVES.md` Phase T-RFL
+- [ ] **Engage T-RFL:** Read `anamnesis/directives/THINKING.md` Phase T-RFL
 - [ ] **Reflect:** What worked? What didn't? What surprised?
 - [ ] **Extract:** Identify ONE reusable pattern or anti-pattern
-- [ ] **Commit:** Update `PROJECT_LEARNINGS.md` (Learning/Mandate/Outcome format, telegraphic)
+- [ ] **Commit:** Update `anamnesis/PROJECT_LEARNINGS.md` (Learning/Mandate/Outcome format, telegraphic)
 
 ### 4.3: Archival Rotation
 
-- [ ] **Archive:** Move `.context/active_state.md` to `.context/history/YYYY-MM-DD_TaskName.md`
-- [ ] **Handover:** Update `.context/handover.md` — Where are we? What's next? (3 bullets max)
+- [ ] **Archive:** Move `anamnesis/.context/active_state.md` to `anamnesis/.context/history/YYYY-MM-DD_TaskName.md`
+- [ ] **Handover:** Update `anamnesis/.context/handover.md` — Where are we? What's next? (3 bullets max)

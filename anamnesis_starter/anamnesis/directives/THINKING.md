@@ -80,7 +80,7 @@ Document the fundamental truths:
 > 2. **What can be removed entirely?** Not simplified—removed. If nothing, you haven't pushed hard enough.
 > 3. **Ruthless prioritization:** What is the MINIMAL problem worth solving? Everything else is cut until proven essential.
 
-**Output:** Document findings in `docs/specs/problem.md` using the template.
+**Output:** Document findings in `anamnesis/specs/problem.md` using the template.
 
 ---
 
@@ -143,7 +143,7 @@ State explicitly:
 | Fix symptom + document debt | Root cause fix is too risky right now. |
 | Escalate to user | Architectural issue discovered. Needs decision. |
 
-**Output:** Proceed to `EXECUTION_DIRECTIVES.md` with validated hypothesis.
+**Output:** Proceed to `anamnesis/directives/EXECUTION.md` with validated hypothesis.
 
 ---
 
@@ -177,7 +177,7 @@ Example:
 
 **Anti-Goals:** Explicitly state what we are NOT solving.
 
-**Output:** Document in `docs/specs/problem.md`.
+**Output:** Document in `anamnesis/specs/problem.md`.
 
 ---
 
@@ -223,7 +223,7 @@ For each option, check:
 
 3. **STOP** and await confirmation.
 
-**Output:** Document chosen option in `docs/specs/options.md`.
+**Output:** Document chosen option in `anamnesis/specs/options.md`.
 
 ---
 
@@ -234,18 +234,18 @@ For each option, check:
 ### T4.1: Required Artifacts
 
 Before coding, ensure these exist:
-- `docs/specs/problem.md` — User, pain, success criteria
-- `docs/specs/options.md` — Chosen approach, trade-offs
-- `docs/specs/requirements.md` — EARS syntax specs
-- `docs/specs/tech.md` — Stack, forbidden patterns
+- `anamnesis/specs/problem.md` — User, pain, success criteria
+- `anamnesis/specs/options.md` — Chosen approach, trade-offs
+- `anamnesis/specs/requirements.md` — EARS syntax specs
+- `anamnesis/specs/tech.md` — Stack, forbidden patterns
 
 ### T4.2: Transition Checklist
 
 - [ ] Problem defined, assumptions validated, approach approved
 - [ ] Specs created/updated
-- [ ] Ready for `EXECUTION_DIRECTIVES.md`
+- [ ] Ready for `anamnesis/directives/EXECUTION.md`
 
-**Next:** Read `coding/EXECUTION_DIRECTIVES.md` to begin implementation.
+**Next:** Read `anamnesis/directives/EXECUTION.md` to begin implementation.
 
 ---
 
@@ -266,7 +266,7 @@ Ask: "What ONE reusable insight emerged from this work?"
 - **If pattern:** How can it be applied to future work?
 - **If anti-pattern:** What caused it? How to prevent recurrence?
 
-**Output:** Add to `PROJECT_LEARNINGS.md` using format:
+**Output:** Add to `anamnesis/PROJECT_LEARNINGS.md` using format:
 ```
 ### X.X. [Title]
 - **Learning:** [What we discovered]
@@ -276,7 +276,7 @@ Ask: "What ONE reusable insight emerged from this work?"
 
 ### T-RFL.3: Decision Distillation
 
-If any of these occurred, formulate an ADR for `DECISION_LOG.md`:
+If any of these occurred, formulate an ADR for `anamnesis/DECISION_LOG.md`:
 
 - Dependency added or removed
 - Schema or data structure changed
@@ -285,6 +285,6 @@ If any of these occurred, formulate an ADR for `DECISION_LOG.md`:
 
 ### T-RFL.4: Handover Synthesis
 
-Distill for the next agent (`.context/handover.md`):
+Distill for the next agent (`anamnesis/.context/handover.md`):
 - **Where are we?** (3 bullets max)
 - **What's next?** (Concrete next steps)

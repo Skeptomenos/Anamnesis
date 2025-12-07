@@ -5,7 +5,7 @@ This document tracks the specific constraints, patterns, and lessons learned *du
 **Rules for this file:**
 1.  **Append Only:** Never delete existing learnings unless they are factually incorrect.
 2.  **Telegraphic Style:** Be concise. (e.g., "AWS Lambda timeout is 15min" > "I discovered that AWS Lambda has a timeout...").
-3.  **Specifics:** Focus on *this* project (API quirks, tech stack limits, user preferences). For general framework rules, refer to `coding/AI_CODING_DIRECTIVES.md`.
+3.  **Specifics:** Focus on *this* project (API quirks, tech stack limits, user preferences). For general framework rules, refer to `anamnesis/directives/`.
 
 ---
 
