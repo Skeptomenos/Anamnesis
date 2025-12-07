@@ -179,4 +179,9 @@ This document tracks the architectural and procedural evolution of the project. 
 ### 7.3. Redundancy is a Feature for Critical Constraints
 - **Learning:** Important rules should appear in multiple files for defense-in-depth. If an eager model skips one checkpoint, it may catch another.
 - **Mandate:** For critical constraints like implementation gates, place in AGENTS.md (entry point), THINKING.md (end of design), and EXECUTION.md (pre-implementation). Use slightly different wording to avoid being filtered as repetition.
-- **Outcome:** Future work identified to add gates to THINKING.md and EXECUTION.md when anamnesis_starter/ structure is created.
+- **Outcome:** Implemented gates in THINKING.md (T4.3 Handshake) and EXECUTION.md (Pre-Flight Gate) in v4.2.
+
+### 7.4. The "Handshake Rule" Kills Momentum Bias
+- **Learning:** Even with approval gates, models often treat "Plan Updated" as implicit permission to continue ("Momentum Bias").
+- **Mandate:** Explicitly ban same-turn transitions. "You CANNOT plan and implement in the same response."
+- **Outcome:** Added Handshake Rule to AGENTS.md Golden Rule #6.

@@ -172,6 +172,10 @@ Do not plan the solution until you have deconstructed the problem.
 
 ## Phase 2: Build & Implement (THE STOP-AND-WAIT)
 
+> **PRE-FLIGHT GATE:**
+> Ensure you have explicit user approval ("Go", "Proceed") before starting this phase.
+> If you just presented the plan, you MUST stop and wait for the handshake.
+
 ### 2.1: The Protocol
 
 1. **Read** `anamnesis/specs/tasks.md`. Identify the next **PENDING** task.

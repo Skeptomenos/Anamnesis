@@ -245,6 +245,13 @@ Before coding, ensure these exist:
 - [ ] Specs created/updated
 - [ ] Ready for `anamnesis/directives/EXECUTION.md`
 
+### T4.3: The Handshake (MANDATORY STOP)
+
+> **CRITICAL:** You cannot transition from Thinking to Execution in the same response.
+> 1. Summarize the plan.
+> 2. Ask "Ready to build?"
+> 3. **STOP.** Wait for the user's explicit "Go".
+
 **Next:** Read `anamnesis/directives/EXECUTION.md` to begin implementation.
 
 ---

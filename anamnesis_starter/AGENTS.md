@@ -1,28 +1,35 @@
-# [Project Name]
+# Portfolio Prism
 
 > **Root File:** Auto-loaded by AI CLI tools. Keep concise (<80 lines).
 
 ## Overview
 
-[2-3 sentences: What is this? What problem does it solve?]
+Privacy-first, high-performance desktop portfolio analyzer using the Tauri + Python Sidecar pattern. Wraps an existing Python/Streamlit analytics engine in a native macOS container. "Battery Included, Browser Free" — no bundled Chromium.
 
 ## Tech Stack
 
-- **Language:** [e.g., Python 3.11+]
-- **Framework:** [e.g., FastAPI]
-- **Database:** [e.g., PostgreSQL]
+- **Shell:** Tauri v2 (Rust) — Native window, OS integration
+- **Frontend:** TypeScript + Vite (loading screen) → Streamlit (main UI)
+- **Engine:** Python (Streamlit sidecar) — Analytics, data processing
+- **Database:** SQLite (local), Supabase (community "Hive")
+- **Proxy:** Cloudflare Workers (API key protection)
 
 ## Structure
 
 ```
-src/               # Source code
-tests/             # Tests
-anamnesis/         # AI framework
-├── .context/      # Session state
-├── directives/    # THINKING.md, EXECUTION.md
-├── standards/     # Code quality rules
-├── specs/         # Feature specifications
-└── templates/     # Recreatable file templates
+.                            # Standard Tauri project layout
+├── src/                     # Frontend (loading screen, TypeScript)
+├── src-tauri/               # Rust shell + Python sidecar
+│   ├── python/              # Python source
+│   │   ├── portfolio_src/   # Business logic (from POC)
+│   │   ├── prism_boot.py    # Entry point
+│   │   └── prism.spec       # PyInstaller spec
+│   └── src/lib.rs           # Sidecar spawning
+├── infrastructure/          # Cloudflare Worker
+├── docs/                    # Architecture & design docs
+├── anamnesis/               # AI developer framework
+├── legacy/react-prototype/  # React UI for v2 (preserved)
+└── POC/                     # Original Python engine (gitignored)
 ```
 
 ---
@@ -31,13 +38,20 @@ anamnesis/         # AI framework
 
 ### Golden Rules
 
-1. **State:** Read `anamnesis/.context/mission.md` + `anamnesis/.context/active_state.md` at session start
+1. **State:** Read `anamnesis/.context/mission.md` at session start
 2. **Specs:** Complex tasks (>1hr) require `anamnesis/specs/`. No code without spec.
 3. **Consensus:** Present plan, WAIT for approval before coding
 4. **Epilogue:** MANDATORY after feature/design completion.
-5. **NO IMPLEMENTATION WITHOUT APPROVAL:** Do NOT write, edit, or delete any files until user explicitly says "go ahead", "proceed", "do it", or similar. Planning and reading are always allowed. Coding requires explicit green light.
+5. **NO IMPLEMENTATION WITHOUT APPROVAL:** ⚠️ CRITICAL ⚠️
+   - Planning, reading, and research: ALWAYS allowed
+   - Writing, editing, or deleting files: REQUIRES explicit user approval
+   - You MUST present your plan and ask "Ready to proceed?" or similar
+   - WAIT for user to say "go", "proceed", "do it", "yes", or clear equivalent
+   - Do NOT interpret your own confidence or plan completeness as approval
    - **HANDSHAKE RULE:** You CANNOT plan and implement in the same response.
      If you just finished planning → STOP. Do not continue to implementation.
+
+> **Models prone to eager execution:** This means YOU. Plan. Present. Ask. Wait.
 
 > **ESCAPE HATCH:** Simple questions or read-only tasks → skip protocol, act immediately.
 
@@ -45,11 +59,12 @@ anamnesis/         # AI framework
 
 | Task | File |
 |------|------|
-| Session start | `anamnesis/.context/mission.md` + `anamnesis/.context/active_state.md` |
+| Session start | `anamnesis/.context/mission.md` |
 | New feature, refactor | `anamnesis/directives/THINKING.md` |
-| Complex bug | `anamnesis/directives/THINKING.md` (T1-RCA) |
 | Implementation | `anamnesis/directives/EXECUTION.md` |
 | Code review | `anamnesis/standards/INDEX.md` |
+| Python code | `anamnesis/standards/global.md` + `python.md` |
+| Rust/Tauri code | `anamnesis/standards/global.md` + `rust.md` |
 | Project constraints | `anamnesis/PROJECT_LEARNINGS.md` |
 
 ---
@@ -57,14 +72,34 @@ anamnesis/         # AI framework
 ## Commands
 
 ```bash
-# Build: [cmd]    Test: [cmd]    Lint: [cmd]    Run: [cmd]
+# Development
+npm run tauri dev
+
+# Build
+npm run tauri build
+
+# Rebuild Python binary
+cd src-tauri/python && source venv-build/bin/activate && pyinstaller prism.spec
+cp dist/prism ../binaries/prism-aarch64-apple-darwin
 ```
 
 ## Constraints
 
-- [Project-specific constraint 1]
-- [Project-specific constraint 2]
+- No bundled Chromium (Tauri uses system WebKit)
+- API keys MUST be proxied via Cloudflare Worker — never in client
+- Local-first, cloud-optional philosophy
+- Data stored in `~/Library/Application Support/PortfolioPrism/` (macOS)
+
+## Current State (Phase 4 In Progress)
+
+- ✅ Phase 1-3: Tauri shell + Python sidecar + POC dashboard transplanted
+- ⏳ Phase 4: Auth & Hive (~70%) — see `docs/phase4_issues.md`
+- ⏳ Phase 5: Polish (pending)
 
 ## State Files
 
-`anamnesis/.context/active_state.md` (current) | `anamnesis/.context/handover.md` (previous) | `anamnesis/specs/tasks.md` (plan)
+| File | Purpose |
+|------|---------|
+| `anamnesis/.context/mission.md` | Living objective |
+| `anamnesis/.context/backlog.md` | Deferred ideas |
+| `anamnesis/specs/tasks.md` | Execution plan |
