@@ -12,14 +12,19 @@ This framework solves the core problems of AI-assisted coding: **Amnesia** (forg
 
 To "hydrate" a new project with this framework:
 
-1. **Copy the framework:** Copy the `coding/` folder to your project root
-2. **Create root file:** Copy `coding/templates/AGENTS.template.md` to your project root as `AGENTS.md`
-3. **Customize root file:** Edit `AGENTS.md` with your project details:
+1. **Copy the framework:** Copy the `anamnesis_starter/` folder to your project root and rename it to `anamnesis/` (or keep it as `anamnesis_starter` and move contents, but typically `anamnesis` is the expected internal name for the framework folder, while `anamnesis_starter` is the distribution name). *Correction: The standard flow is to copy `anamnesis_starter/` contents into your project root.*
+
+```bash
+cp -r anamnesis_starter/ my-new-project/
+cd my-new-project/
+```
+*(The structure inside `anamnesis_starter` is already set up to be the project root)*
+
+2. **Customize root file:** Edit `AGENTS.md` with your project details:
    - Project overview and tech stack
    - Common commands (build, test, lint)
    - Key constraints
-4. **Create learnings file:** Move `coding/templates/PROJECT_LEARNINGS.template.md` to your project root as `PROJECT_LEARNINGS.md`
-5. **Initialize context:** Create `.context/` directory for state management
+3. **Initialize context:** Fill in `.context/mission.md` with your project objective.
 
 ### 2. CLI Tool Setup
 
@@ -36,15 +41,15 @@ Choose one option:
   ```json
   {
     "context": {
-      "fileName": ["AGENTS.md", "GEMINI.md"]
+      "fileName": ["AGENTS.md", "anamnesis/templates/GEMINI.md"]
     }
   }
   ```
-- **Option B:** Copy `coding/templates/GEMINI.template.md` to your project root as `GEMINI.md`
+- **Option B:** Copy `anamnesis/templates/GEMINI.md` to your project root as `GEMINI.md`
 
 **Claude Code**
 
-Copy `coding/templates/CLAUDE.template.md` to your project root as `CLAUDE.md`
+Copy `anamnesis/templates/CLAUDE.md` to your project root as `CLAUDE.md`
 
 ### 3. The Workflow You Will See
 
@@ -53,7 +58,7 @@ Don't be alarmed if the AI doesn't start coding immediately. It follows a **Thin
 1. **Context:** Loads state from `.context/` and constraints from `PROJECT_LEARNINGS.md`.
 2. **Thinking:** For complex tasks, enters First Principles mode—decomposes the problem, runs Elimination Test, explores options.
 3. **Consensus Gate:** Presents a **Plan Summary** and **WAITS** for your approval before any code.
-4. **Execution:** Implements tasks one-by-one from `docs/specs/tasks.md`, with OODA debugging if stuck.
+4. **Execution:** Implements tasks one-by-one from `anamnesis/specs/tasks.md`, with OODA debugging if stuck.
 5. **Epilogue:** Reflects on session (T-RFL), distills learnings, archives state.
 
 ---
@@ -65,7 +70,7 @@ sequenceDiagram
     participant User
     participant AI as AI Agent
     participant Context as .context/
-    participant Specs as docs/specs/
+    participant Specs as anamnesis/specs/
 
     User->>AI: Request
 
@@ -114,9 +119,9 @@ The framework uses a **Progressive Disclosure** pattern to optimize AI context u
 | Layer | File | When Loaded | Purpose |
 |-------|------|-------------|---------|
 | **Root** | `AGENTS.md` | Always (auto-loaded) | Essential context, golden rules, pointers |
-| **Thinking** | `coding/THINKING_DIRECTIVES.md` | New ideas, features, refactors, complex bugs | First Principles & Design Thinking |
-| **Execution** | `coding/EXECUTION_DIRECTIVES.md` | Implementation tasks | Build, test, deliver protocols |
-| **Quality** | `coding/CODING_STANDARDS.md` | Code writing | Style and quality rules |
+| **Thinking** | `anamnesis/directives/THINKING.md` | New ideas, features, refactors, complex bugs | First Principles & Design Thinking |
+| **Execution** | `anamnesis/directives/EXECUTION.md` | Implementation tasks | Build, test, deliver protocols |
+| **Quality** | `anamnesis/standards/INDEX.md` | Code writing | Style and quality rules |
 | **Wisdom** | `PROJECT_LEARNINGS.md` | Every session | Project-specific constraints |
 
 **Why?** LLMs have limited instruction-following capacity (~150-200 instructions). The slim root file (~70 lines) provides essential context, and detailed protocols are read only when needed. The separation of Thinking and Execution allows different cognitive modes for different tasks.
@@ -125,7 +130,7 @@ The framework uses a **Progressive Disclosure** pattern to optimize AI context u
 
 ## 🧠 The Core Components
 
-### 1. `THINKING_DIRECTIVES.md` (The Mind)
+### 1. `THINKING.md` (The Mind)
 
 This guides problem decomposition BEFORE implementation (v4.0):
 - **First Principles:** Strip problems to fundamental truths before building solutions.
@@ -133,7 +138,7 @@ This guides problem decomposition BEFORE implementation (v4.0):
 - **Root Cause Analysis:** Structured debugging for complex bugs.
 - **Consensus Gate:** Present thinking summary and WAIT for user validation.
 
-### 2. `EXECUTION_DIRECTIVES.md` (The Hands)
+### 2. `EXECUTION.md` (The Hands)
 
 This guides implementation AFTER thinking is complete (v4.0):
 - **Spec-Driven Development (SDD):** No code without a persistent "Source of Truth".
@@ -141,12 +146,12 @@ This guides implementation AFTER thinking is complete (v4.0):
 - **OODA Loop:** Observe, Orient, Decide, Act for debugging.
 - **OODA Stop-Gap:** After 3 failed iterations, assess confidence and potentially return to thinking.
 
-### 3. `CODING_STANDARDS.md` (The Quality)
+### 3. `standards/` (The Quality)
 
 This defines the syntax rules:
-- **EARS Syntax:** Requirements must use "When... Then..." syntax to reduce ambiguity.
-- **Visual Architecture:** Complex flows require Mermaid.js diagrams.
-- **Two-Tiered Testing:** Strictly separates Unit Tests (fast, mocked) from Contract Tests (boundaries).
+- **Index:** `anamnesis/standards/INDEX.md` routes to language-specific files.
+- **Global:** Rules that apply everywhere (e.g. "I/O Fortress").
+- **Language Specific:** Python, TypeScript, Rust, etc.
 
 ### 4. `PROJECT_LEARNINGS.md` (The Wisdom)
 
@@ -155,32 +160,9 @@ This file gets smarter over time. It captures:
 - **Patterns:** Solutions that worked.
 - **Anti-Patterns:** Approaches that failed.
 
-### 5. `coding/templates/` (The Tools)
+### 5. `anamnesis/templates/` (The Tools)
 
-Standardized templates for Spec-Driven Development:
-
-**Root File Templates:**
-- `AGENTS.template.md` - Primary root file (auto-loaded by AI CLI tools)
-- `CLAUDE.template.md` - Wrapper for Claude Code
-- `GEMINI.template.md` - Wrapper for Gemini CLI
-
-**Project Templates:**
-- `PROJECT_LEARNINGS.template.md` - Cumulative project wisdom seed
-
-**Spec Templates:**
-- `spec_problem.md` - Problem definition (User, Pain, Constraints)
-- `spec_options.md` - Solution alternatives considered
-- `spec_product.md` - The "Why" (User Persona, Anti-Goals)
-- `spec_tech.md` - The Constraints (Stack, Forbidden Libraries)
-- `spec_requirements.md` - The "What" (EARS Syntax)
-- `spec_design.md` - The Visuals (Mermaid Diagrams)
-- `spec_tasks.md` - The Plan (Stop-and-Wait Checklist)
-
-**State Templates:**
-- `active_state.md` - Current session state
-- `handover.md` - Session handover summary
-- `changelog.md` - Version history format
-- `decision_log.md` - Architectural decision records
+Standardized templates for Spec-Driven Development.
 
 ---
 
@@ -192,45 +174,41 @@ The framework expects this structure in your project:
 # Project Root
 AGENTS.md                    # Root file (auto-loaded by AI CLI tools)
 CLAUDE.md                    # Optional: Claude Code wrapper
-GEMINI.md                    # Optional: Gemini CLI wrapper (if not using settings.json)
+GEMINI.md                    # Optional: Gemini CLI wrapper
 PROJECT_LEARNINGS.md         # Cumulative project wisdom
 DECISION_LOG.md              # Architectural decisions
+CHANGELOG.md                 # Version history
 
 .context/
 ├── active_state.md          # Current session state (hot)
 ├── handover.md              # Previous session summary (baton)
-└── history/                 # Archived states (audit trail)
+├── history/                 # Archived states (audit trail)
+├── mission.md               # Living objective
+├── backlog.md               # Deferred ideas
+└── tech-stack.md            # Approved tools
 
-docs/
-└── specs/                   # Source of Truth (SDD)
-    ├── problem.md           # Problem definition
-    ├── options.md           # Solution alternatives
-    ├── product.md           # The "Why" & "Vibe"
-    ├── tech.md              # The Constraints
-    ├── requirements.md      # The "What" (EARS Syntax)
-    ├── design.md            # The Visuals (Mermaid)
-    └── tasks.md             # The Plan
-
-coding/
-├── THINKING_DIRECTIVES.md   # First Principles & Design (v4)
-├── EXECUTION_DIRECTIVES.md  # Build & Deliver (v4)
-├── CODING_STANDARDS.md      # Code quality rules (v4)
-└── templates/               # All templates (15 files)
-    ├── AGENTS.template.md
-    ├── CLAUDE.template.md
-    ├── GEMINI.template.md
-    ├── PROJECT_LEARNINGS.template.md
+anamnesis/                   # The Framework
+├── directives/
+│   ├── THINKING.md          # First Principles & Design
+│   └── EXECUTION.md         # Build & Deliver
+├── standards/
+│   ├── INDEX.md             # Quality rules index
+│   ├── global.md            # Language-agnostic
+│   ├── python.md            # Python-specific
+│   └── typescript.md        # TypeScript-specific
+├── specs/                   # Source of Truth (SDD)
+│   ├── problem.md           # Problem definition
+│   ├── options.md           # Solution alternatives
+│   ├── product.md           # The "Why" & "Vibe"
+│   ├── tech.md              # The Constraints
+│   ├── requirements.md      # The "What" (EARS Syntax)
+│   ├── design.md            # The Visuals (Mermaid)
+│   └── tasks.md             # The Plan
+└── templates/               # Recreatable file templates
     ├── active_state.md
     ├── handover.md
-    ├── changelog.md
-    ├── decision_log.md
-    ├── spec_problem.md
-    ├── spec_options.md
-    ├── spec_product.md
-    ├── spec_tech.md
-    ├── spec_requirements.md
-    ├── spec_design.md
-    └── spec_tasks.md
+    ├── CLAUDE.md
+    └── GEMINI.md
 ```
 
 ---
@@ -248,6 +226,6 @@ coding/
 ## 🛑 The "Golden Rules" (For the AI)
 
 1. **Update State:** If it's not in `.context/active_state.md`, it didn't happen.
-2. **Follow the Spec:** Code must match `docs/specs/requirements.md`.
+2. **Follow the Spec:** Code must match `anamnesis/specs/requirements.md`.
 3. **Telegraphic Context:** Internal notes should be caveman-style ("Server crash. Retry fail.").
 4. **Professional Docs:** Public docs must be Shakespearean.

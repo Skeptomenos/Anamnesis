@@ -120,8 +120,9 @@ ls anamnesis_starter/         # Inspect distributable framework
 
 | File | Purpose | Update Frequency |
 |------|---------|------------------|
-| `docs/product/mission.md` | Living objective, evolves with understanding | When objective pivots significantly |
+| `.context/mission.md` | Living objective, evolves with understanding | When objective pivots significantly |
 | `.context/backlog.md` | Deferred ideas and future work | When parking ideas for later |
 | `DECISION_LOG.md` | Architectural decisions | When making structural choices |
 | `PROJECT_LEARNINGS.md` | Process wisdom and constraints | After completing work (Epilogue) |
+
 

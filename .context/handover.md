@@ -1,34 +1,24 @@
-# Handover: v4.2 Approval Gate Added
+# Handover: v4.2 Restructuring Complete
 
 ## Where We Are
-- **Version:** 4.2 (approval gate constraint added)
-- **Previous session:** Restructured to `anamnesis_starter/` (not yet committed)
-- **This session:** Added Golden Rule #6 for mandatory approval before implementation
+- **Version:** 4.2 restructuring complete
+- **Major change:** Separated framework into `anamnesis_starter/` (distributable) and `knowledge_base/` (meta-project)
+- **Status:** All cleanup done, changes committed
 
 ## What Was Accomplished This Session
 
-### Approval Gate for Eager Models
-1. **Problem identified:** Gemini 2.5 Pro and Claude Opus tend to start coding immediately after planning without waiting for user approval
-2. **Added Golden Rule #6 to AGENTS.md:**
-   - Planning, reading, research: ALWAYS allowed
-   - Writing, editing, deleting files: REQUIRES explicit user approval
-   - Must ask "Ready to proceed?" and WAIT
-   - Added callout: "Models prone to eager execution: This means YOU."
-3. **Documented in DECISION_LOG.md** with full ADR format
-4. **Added to PROJECT_LEARNINGS.md** Section 7 (3 new patterns)
+### v4.2 Restructuring & Cleanup
+1. **Deleted legacy directories:** `coding/` and `docs/product/` (moved to `anamnesis_starter/` and `.context/mission.md`)
+2. **Updated `README.md`:** Reflects new directory structure and setup instructions
+3. **Updated `AGENTS.md`:** Fixed paths and references for the meta-project
+4. **Restored Dogfooding:** Created `.context/mission.md` for the meta-project
+5. **Verified Templates:** Confirmed `anamnesis_starter/` contains clean, generic templates (no project pollution)
 
-### Key Design Decisions
-- Model-specific rules rejected (static markdown can't detect model identity)
-- Universal strict rules chosen (design for worst case)
-- Emphatic formatting (⚠️, caps, bold) to increase salience
-- Defense-in-depth planned for THINKING.md and EXECUTION.md
-
-## Outstanding from Previous Session
-- `coding/` directory deleted but changes not committed
-- `anamnesis_starter/` structure described in AGENTS.md but directory is empty
-- Previous restructuring work needs to be either committed or reconciled
+### Key Decisions (Implicit)
+- **Dogfooding:** The meta-project uses the framework structure but keeps its own identity (e.g., `docs/research` stays)
+- **Separation of Concerns:** `anamnesis_starter` is the "Product", `knowledge_base` is the "Repo"
 
 ## Next Steps
-1. **Decide on `anamnesis_starter/`:** Either create the structure or update AGENTS.md to match current reality
-2. **Add gates to THINKING.md and EXECUTION.md** when directive files exist
-3. **Test approval gate** with Gemini 2.5 Pro on a real task
+1. **Test v4.2 on real project:** Copy `anamnesis_starter/` to a new repo and try it out
+2. **Tag Release:** Consider tagging v4.2 in git
+3. **Monitor Approval Gate:** Ensure the new Golden Rule #6 (added by previous agent) works as intended
