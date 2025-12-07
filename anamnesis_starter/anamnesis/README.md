@@ -69,3 +69,18 @@ your-project/
 - **Templates:** Files that get archived and recreated frequently
 - **Specs:** Feature specifications (one set per project)
 - **.context/:** Living project state that evolves over time
+
+## 📝 How to Use Specs (Spec-Driven Development)
+
+Specs are living documents that serve as the "Source of Truth". You do not need to write them manually; the AI helps you draft them.
+
+### The Lifecycle
+1.  **Define (`problem.md`):** You explain the goal. AI drafts the problem statement, user persona, and success metrics.
+2.  **Explore (`options.md`):** AI proposes 2-3 technical approaches. You choose one.
+3.  **Specify (`requirements.md`):** AI converts the choice into "When... Then..." rules.
+4.  **Plan (`tasks.md`):** AI breaks it down into atomic, checklist-style tasks.
+5.  **Execute:** AI implements tasks one by one, checking them off.
+
+### User Responsibility
+*   **Mission:** You must fill in `.context/mission.md` manually at the start.
+*   **Approval:** You must review and approve spec changes before the AI builds.
