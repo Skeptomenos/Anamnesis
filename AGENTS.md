@@ -74,6 +74,8 @@ knowledge_base/                    # META-PROJECT (this repo)
    - You MUST present your plan and ask "Ready to proceed?" or similar
    - WAIT for user to say "go", "proceed", "do it", "yes", or clear equivalent
    - Do NOT interpret your own confidence or plan completeness as approval
+   - **HANDSHAKE RULE:** You CANNOT plan and implement in the same response.
+     If you just finished planning → STOP. Do not continue to implementation.
 
 > **Models prone to eager execution:** This means YOU. Plan. Present. Ask. Wait.
 
