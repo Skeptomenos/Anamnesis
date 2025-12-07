@@ -1,14 +1,14 @@
 # Solution Options
 
 > **Purpose:** Document alternatives considered before committing to an approach.
-> **When:** After `THINKING_DIRECTIVES.md` Phase T3.1, before T3.3 Consensus Gate.
+> **When:** After `anamnesis/directives/THINKING.md` Phase T3.1, before T3.3 Consensus Gate.
 > **Output:** Chosen solution with documented rationale and trade-offs.
 
 ---
 
 ## Problem Reference
 
-See: `docs/specs/problem.md`
+See: `anamnesis/specs/problem.md`
 
 **Problem Statement:** [Copy the one-sentence problem statement here]
 
@@ -116,6 +116,6 @@ See: `docs/specs/problem.md`
 ## Next Steps
 
 After consensus approval:
-1. Create/update `docs/specs/requirements.md` with detailed requirements
-2. Create/update `docs/specs/tech.md` with technical constraints
-3. Proceed to `EXECUTION_DIRECTIVES.md` for implementation
+1. Create/update `anamnesis/specs/requirements.md` with detailed requirements
+2. Create/update `anamnesis/specs/tech.md` with technical constraints
+3. Proceed to `anamnesis/directives/EXECUTION.md` for implementation

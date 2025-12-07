@@ -31,7 +31,7 @@ anamnesis/         # AI framework
 
 ### Golden Rules
 
-1. **State:** Read `anamnesis/.context/mission.md` at session start
+1. **State:** Read `anamnesis/.context/mission.md` + `anamnesis/.context/active_state.md` at session start
 2. **Specs:** Complex tasks (>1hr) require `anamnesis/specs/`. No code without spec.
 3. **Consensus:** Present plan, WAIT for approval before coding
 4. **Epilogue:** MANDATORY after feature/design completion.
@@ -45,7 +45,7 @@ anamnesis/         # AI framework
 
 | Task | File |
 |------|------|
-| Session start | `anamnesis/.context/mission.md` |
+| Session start | `anamnesis/.context/mission.md` + `anamnesis/.context/active_state.md` |
 | New feature, refactor | `anamnesis/directives/THINKING.md` |
 | Complex bug | `anamnesis/directives/THINKING.md` (T1-RCA) |
 | Implementation | `anamnesis/directives/EXECUTION.md` |
