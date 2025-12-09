@@ -12,7 +12,7 @@ Anamnesis solves core AI-assisted coding problems:
 - **Vibe Coding** → Consensus Gates
 - **Monolithic Code** → Atomic decomposition
 
-**Version:** 4.2
+**Version:** 4.3
 
 ## Tech Stack
 
@@ -26,30 +26,46 @@ Anamnesis solves core AI-assisted coding problems:
 knowledge_base/                    # META-PROJECT (this repo)
 ├── anamnesis_starter/             # DISTRIBUTABLE STARTER (copy to new projects)
 │   ├── anamnesis/                 # The framework
+│   │   ├── .context/              # Project state
+│   │   │   ├── workstreams/       # Parallel work contexts
+│   │   │   ├── mission.md         # Living objective
+│   │   │   ├── backlog.md         # Deferred ideas
+│   │   │   └── tech-stack.md      # Approved tools
 │   │   ├── directives/
 │   │   │   ├── THINKING.md        # First Principles & Design
 │   │   │   └── EXECUTION.md       # Build & Deliver
+│   │   ├── docs/
+│   │   │   └── MIGRATION.md       # Version migration guide
+│   │   ├── specs/                 # Feature specifications
+│   │   │   └── tasks.md           # Implementation plan (v4.3 format)
 │   │   ├── standards/
 │   │   │   ├── INDEX.md           # Quality rules index
 │   │   │   ├── global.md          # Language-agnostic
 │   │   │   ├── python.md          # Python-specific
 │   │   │   └── typescript.md      # TypeScript-specific
-│   │   ├── templates/             # Recreatable file templates
-│   │   ├── specs/                 # Feature specifications (living files)
-│   │   ├── .context/              # Project state
-│   │   │   ├── mission.md         # Living objective
-│   │   │   ├── backlog.md         # Deferred ideas
-│   │   │   └── tech-stack.md      # Approved tools
+│   │   ├── templates/
+│   │   │   ├── board.md           # Kanban board template
+│   │   │   └── workstream.md      # Workstream context template
 │   │   ├── DECISION_LOG.md
 │   │   ├── PROJECT_LEARNINGS.md
 │   │   └── README.md
 │   ├── AGENTS.md                  # AI entry point
 │   └── CHANGELOG.md
+├── specs/                         # Meta-project specifications
+│   ├── tasks.md                   # Implementation plan
+│   ├── problem.md                 # Problem statement
+│   ├── product.md                 # Product definition
+│   ├── requirements.md            # Requirements
+│   ├── design.md                  # Design specification
+│   ├── options.md                 # Options analysis
+│   └── tech.md                    # Technical specification
 ├── docs/research/                 # Framework research (meta-project only)
-├── archive/                       # Historical versions
 ├── .context/                      # This project's state
-│   ├── handover.md
-│   └── backlog.md
+│   ├── workstreams/               # Parallel work contexts
+│   ├── board.md                   # Auto-generated kanban
+│   ├── mission.md                 # Living objective
+│   ├── handover.md                # Session handover
+│   └── backlog.md                 # Deferred ideas
 ├── AGENTS.md                      # THIS FILE (meta-project entry)
 ├── CHANGELOG.md
 ├── DECISION_LOG.md
@@ -124,5 +140,34 @@ ls anamnesis_starter/         # Inspect distributable framework
 | `.context/backlog.md` | Deferred ideas and future work | When parking ideas for later |
 | `DECISION_LOG.md` | Architectural decisions | When making structural choices |
 | `PROJECT_LEARNINGS.md` | Process wisdom and constraints | After completing work (Epilogue) |
+
+## Task Management (v4.3)
+
+### Task States
+
+| Status | Meaning | Next Action |
+|--------|---------|-------------|
+| `Backlog` | Idea captured, not prioritized | Prioritize or park |
+| `Open` | Ready to work, dependencies met | Start work |
+| `In Progress` | Currently being worked on | Complete or block |
+| `Blocked` | Cannot proceed, waiting | Resolve blocker |
+| `Done` | Verified complete | Archive when ready |
+| `Archive` | Historical reference | None |
+
+### Rules
+
+1. **Check dependencies** before starting any task
+2. **One task In Progress** at a time per workstream
+3. **Update status immediately** when state changes
+4. **Archive completed tasks** periodically to reduce noise
+
+### User Commands
+
+| Command | Action |
+|---------|--------|
+| "Generate board" | Regenerate `.context/board.md` from `specs/tasks.md` |
+| "Next task" | Suggest highest-priority Open task with met dependencies |
+| "Switch to [workstream]" | Change active workstream context |
+| "Archive done tasks" | Move Done tasks to Archive section |
 
 

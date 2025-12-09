@@ -5,6 +5,38 @@ All notable changes to the **Anamnesis** framework will be documented in this fi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.3.0] - 2025-12-09
+### Added
+- **Task Management (v4.3):** Enhanced task tracking with dependencies and workstreams
+  - 6-status workflow: Backlog → Open → In Progress → Blocked → Done → Archive
+  - Task dependencies with explicit `Dependencies:` field
+  - Workstream support for parallel work contexts
+  - Auto-generated kanban board (`board.md`)
+- **User Commands:** "Generate board", "Next task", "Switch to [workstream]", "Archive done tasks"
+- **Meta-project specs/:** Full specification directory (problem.md, product.md, requirements.md, design.md, options.md, tech.md, tasks.md)
+- **Migration Guide:** `anamnesis/docs/MIGRATION.md` for v4.2 → v4.3 upgrades
+
+### Changed
+- **AGENTS.md:** Updated repository structure diagram, added Task Management section
+- **specs/tasks.md:** New format with Status Legend, Workstreams table, Archive section
+- **directives/EXECUTION.md:** Added Phase 0.1 (board generation) and Phase 2.1 (dependency checks)
+- **directives/THINKING.md:** Added Phase T4.2 (AI-assisted task generation)
+- **templates/active_state.md:** Added Active Workstream section
+
+### Meta-Project
+- Migrated meta-project (knowledge_base/) to v4.3 format
+- Created `.context/workstreams/` and `.context/board.md`
+- Full dogfooding of v4.3 task management
+
+## [4.2.0] - 2025-12-07
+### Added
+- **Defense-in-Depth:** Multiple approval checkpoints in THINKING.md and EXECUTION.md
+- **Handshake Rule:** Explicit ban on same-turn plan→implement transitions
+
+### Changed
+- **Golden Rule #6:** Enhanced with Handshake Rule enforcement
+- **README.md:** Added Pro-Tips about Consensus Gate
+
 ## [4.1.0] - 2025-12-02
 ### Added
 - **Elimination Test:** New mandatory checkpoint in T1 phase with three prompts:

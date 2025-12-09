@@ -6,18 +6,25 @@
 
 ## Current Focus
 
-**Phase:** v4.2 Framework Restructuring
+**Phase:** v4.3 Task Management & Documentation
 
-We are separating the "Meta-Project" (this repository, which develops the framework) from the "Distributable Framework" (the starter kit for new projects).
+The framework now has:
+- [x] Separation of Meta-Project and Distributable Starter
+- [x] Defense-in-Depth approval gates (v4.2)
+- [x] Task management with dependencies (v4.3)
+- [x] Workstream support for parallel contexts
+- [x] Meta-project dogfooding v4.3
 
 ## Success Looks Like
 
 - [x] **Separation:** `anamnesis_starter/` is a standalone, copy-pasteable directory.
 - [x] **Cleanup:** Old `coding/` and `docs/product/` directories are removed.
-- [ ] **Dogfooding:** This repository uses the new v4.2 structure itself.
-- [ ] **Documentation:** `README.md` and `AGENTS.md` accurately reflect the new structure.
+- [x] **v4.2 Defense:** Handshake Rule and Defense-in-Depth implemented.
+- [x] **v4.3 Tasks:** Task management with 6-status workflow, dependencies, workstreams.
+- [x] **Dogfooding:** This repository uses the v4.3 structure itself.
+- [ ] **Documentation:** Improve README clarity and add visual diagrams.
 
 ## Constraints
 
 - **Meta-Project:** Changes here propagate to the definition of the framework.
-- **Backwards Compatibility:** We should be careful about breaking changes for existing users (though v4.2 is a breaking change).
+- **Backwards Compatibility:** Migration guide exists for v4.2 → v4.3.
