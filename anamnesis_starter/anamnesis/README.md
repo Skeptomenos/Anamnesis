@@ -80,6 +80,26 @@ The framework includes enhanced task management with:
 - **Workstreams:** Organize parallel work contexts for features or investigations
 - **Kanban Board:** Visual progress tracking via auto-generated `board.md`
 
+### Task States
+
+| Status | Meaning | Next Action |
+|--------|---------|-------------|
+| `Backlog` | Idea captured, not prioritized | Prioritize or park |
+| `Open` | Ready to work, dependencies met | Start work |
+| `In Progress` | Currently being worked on | Complete or block |
+| `Blocked` | Cannot proceed, waiting | Resolve blocker |
+| `Done` | Verified complete | Archive when ready |
+| `Archive` | Historical reference | None |
+
+### User Commands
+
+| Command | Action |
+|---------|--------|
+| "Generate board" | Regenerate `board.md` from `tasks.md` |
+| "Next task" | Find and start next Open task |
+| "Switch to [workstream]" | Change active workstream |
+| "Archive done tasks" | Move Done tasks to Archive section |
+
 See `anamnesis/specs/tasks.md` for task template and `anamnesis/docs/MIGRATION.md` for upgrading existing projects.
 
 ## Key Concepts
@@ -104,3 +124,63 @@ Specs are living documents that serve as the "Source of Truth". You do not need 
 ### User Responsibility
 *   **Mission:** You must fill in `.context/mission.md` manually at the start.
 *   **Approval:** You must review and approve spec changes before the AI builds.
+
+---
+
+## 🔄 Interaction Diagram
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant AI as AI Agent
+    participant Context as .context/
+    participant Specs as anamnesis/specs/
+
+    User->>AI: Request
+
+    rect rgb(40, 40, 40)
+    Note right of AI: CONTEXT
+    AI->>Context: Load state & constraints
+    end
+
+    alt Simple Task
+        AI->>User: Answer (Escape Hatch)
+    else Complex Task
+        rect rgb(60, 30, 70)
+        Note right of AI: THINKING
+        AI->>AI: First Principles & Elimination Test
+        AI->>Specs: Draft problem.md, options.md
+        AI->>User: 🛑 Consensus Gate - WAIT
+        end
+        
+        User->>AI: Approved
+
+        rect rgb(30, 50, 80)
+        Note right of AI: EXECUTION
+        loop Task by Task
+            AI->>Specs: Read → Build → Test → Mark Done
+            opt 3+ Failures
+                AI-->>AI: OODA Stop-Gap (may return to Thinking)
+            end
+        end
+        end
+
+        rect rgb(30, 70, 40)
+        Note right of AI: EPILOGUE (Reflect)
+        AI->>AI: T-RFL: Synthesize learnings
+        AI->>Context: Archive state, handover
+        AI->>User: Session complete
+        end
+    end
+```
+
+---
+
+## ⚡ Pro-Tips for the User
+
+- **The "Escape Hatch":** If you just want to ask "How do I list files?", the AI knows to skip the heavy process. Just ask.
+- **The "Consensus Gate":** The AI will **STOP** after planning. You must explicitly say "Proceed" or "Approved" to start coding.
+- **The "Handshake Rule":** The AI is forbidden from planning and executing in the same response. It MUST stop and wait for your go-ahead.
+- **The "Epilogue":** If the AI says "I'm done" but hasn't updated the docs, just type: **"Execute Epilogue."**
+- **Debug Loop:** If the AI gets stuck, it will enter into **OODA Loop** (Observe, Orient, Decide, Act). It will ask you to run commands to gather evidence. **Run them.**
+- **Root File Customization:** The `AGENTS.md` file should be customized for each project. Fill in your tech stack, common commands, and key constraints.
