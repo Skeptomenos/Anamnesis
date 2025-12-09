@@ -46,9 +46,9 @@
 
 ### Workstream: docs
 
-- [ ] **TASK-003:** Improve framework README clarity
+- [x] **TASK-003:** Improve framework README clarity
     - **Dependencies:** None
-    - **Status:** Open
+    - **Status:** Done
     - **Workstream:** docs
     - **Context/Constraints:** Make onboarding smoother for new users
 

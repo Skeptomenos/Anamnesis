@@ -10,9 +10,9 @@
 
 | Total | Backlog | Open | In Progress | Blocked | Done |
 |-------|---------|------|-------------|---------|------|
-| 4     | 1       | 1    | 0           | 0       | 2    |
+| 4     | 1       | 0    | 0           | 0       | 3    |
 
-**Progress:** [█████░░░░░] 50% (2/4 tasks)
+**Progress:** [████████░░] 75% (3/4 tasks)
 
 ---
 
@@ -30,9 +30,7 @@
 
 ## Open
 
-- [ ] **TASK-003:** Improve framework README clarity
-    - *Dependencies:* None
-    - *Workstream:* docs
+<!-- No open tasks -->
 
 ---
 
@@ -54,6 +52,10 @@
     - *Completed:* 2025-12-09
     - *Workstream:* main
 
+- [x] **TASK-003:** Improve framework README clarity
+    - *Completed:* 2025-12-09
+    - *Workstream:* docs
+
 ---
 
 ## Workstream Summary
@@ -61,4 +63,4 @@
 | Workstream | Total | Done | Progress |
 |------------|-------|------|----------|
 | main       | 2     | 2    | 100%     |
-| docs       | 2     | 0    | 0%       |
+| docs       | 2     | 1    | 50%       |
