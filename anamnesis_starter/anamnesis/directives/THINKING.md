@@ -23,6 +23,23 @@
 
 ---
 
+## Phase Overview
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  THINKING: Problem → Understanding → Options → Handoff         │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  T1 (Decompose) ──→ T2 (Empathize) ──→ T3 (Explore) ──→ T4 ──→ EXECUTION
+│       │                                      │                  │
+│       └──→ T1-RCA (Complex Bugs) ────────────┘                  │
+│                                                                 │
+│  T-RFL (Reflect) ←── Called from EXECUTION Phase 4 (Epilogue)  │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## Phase T1: Problem Decomposition (First Principles)
 
 > **Goal:** Strip the problem to its fundamental truths before building anything.

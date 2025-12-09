@@ -53,6 +53,25 @@
 
 ---
 
+## Phase Overview
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  EXECUTION: Context → Plan → Build → Verify → Deliver          │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  Phase 0 ──→ Phase 1 ──→ Phase 2 ──→ Phase 3 ──→ Phase 4       │
+│  (Context)   (Plan)      (Build)     (Verify)   (Epilogue)     │
+│     │           │           │                       │           │
+│     │           │           └── OODA Loop ──────────┤           │
+│     │           │               (if stuck)          │           │
+│     └───────────┴─── Return to THINKING ←───────────┘           │
+│                      (if fundamentals wrong)                    │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## Phase 0: Context & State Management (THE BRAIN)
 
 This phase ensures continuity and learning across sessions.
